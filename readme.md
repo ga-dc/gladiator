@@ -57,3 +57,5 @@ functionality w/o tests, or try to write the tests yourself.
 * Update your winning conditions so that if the gladiator named "Maximus" is in the fight, he wins.
 * Add a method to check to see if the crowd is entertained (`.entertained?`). The crowd is only entertained if Maximus is in the arena.
 * Before a losing gladiator is eliminated, the user should be prompted to put their thumbs up or down. If user votes down, the losing gladiator is removed. If the user votes up, the gladiator stays in the arena and his opponent is removed. (Life isn't fair.)
+
+..
