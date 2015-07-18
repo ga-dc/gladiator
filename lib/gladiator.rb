@@ -1,3 +1,5 @@
+
+
 class Gladiator
 
   def initialize(new_name, new_weapon)
