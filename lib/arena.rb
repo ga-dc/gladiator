@@ -26,21 +26,40 @@ class Arena
     end
   end
 
+  def remove_gladiator(gladiator_name)
+    if @gladiators.count > 0
+      @gladiators.delete(gladiator_name)
+    end
+  end
 
   def fight
     if @gladiators.count == 2
-      weapon1 = @gladiators.first.weapon.to_sym
-      weapon2 = @gladiators.last.weapon.to_sym
-      winning_weapon = RULES[weapon1][weapon2]
-      if winning_weapon == :draw
-        @gladiators.delete_at(1)
-        @gladiators.delete_at(0)
-      elsif winning_weapon == weapon1
-        @gladiators.delete_at(1)
+      if @gladiators.include?("Maximus")
+        @gladiators.delete_if {|x| x!="Maximus"}
       else
-        @gladiators.delete_at(0)
+        weapon1 = @gladiators[0].weapon.to_sym
+        weapon2 = @gladiators[1].weapon.to_sym
+        winning_weapon = RULES[weapon1][weapon2]
+        if winning_weapon == :draw
+          @gladiators.delete_at(1)
+          @gladiators.delete_at(0)
+        elsif winning_weapon == weapon1
+          @gladiators.delete_at(1)
+        else
+          @gladiators.delete_at(0)
+        end
+    end
+
+    def entertained?
+      if @gladiators.include?("Maximus")
+        return true
+      else
+        return false
       end
     end
+    
   end
+
+
 
 end
