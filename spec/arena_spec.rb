@@ -28,6 +28,21 @@ describe Arena do
       expect(arena.gladiators).to eq([])
     end
   end
+  describe "#remove_gladiator" do
+    subject(:arena){Arena.new("megalopolis")}
+    let(:maximus){Gladiator.new("Maximus","Spear")}
+    let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
+    context "if there are gladiators" do
+      it "removes a gladiator from arena" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+
+        arena.remove_gladiator(maximus.name)
+
+        expect(arena.gladiators.count).to eq(1)
+      end
+    end
+  end
 
   describe "#add_gladiator" do
 
