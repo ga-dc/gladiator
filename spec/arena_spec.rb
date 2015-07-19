@@ -9,6 +9,7 @@ require './lib/gladiator'
 describe Arena do
   let(:arena){Arena.new("megalopolis")}
   let(:maximus){Gladiator.new("Maximus","Spear")}
+  let(:socrates){Gladiator.new("Socrates","Spear")}
   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
@@ -82,7 +83,7 @@ describe Arena do
 
     context "when Spear v Trident" do
       it "kills: spear when fighting trident" do
-        arena.add_gladiator(maximus)
+        arena.add_gladiator(socrates)
         arena.add_gladiator(bilcephalon)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
@@ -118,5 +119,38 @@ describe Arena do
         expect(arena.gladiators.count).to eq(0)
       end
     end
+    context "when maximus is fighting" do
+      it "kills the other gladiator" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators.first).to eq(maximus)
+      end
+    end
   end
+  # describe "#entertained" do
+  #   subject(:arena){Arena.new("megalopolis")}
+  #   let(:maximus){Gladiator.new("Maximus","Spear")}
+  #   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
+  #   let(:ephates){Gladiator.new("Ephates","Club")}
+  #   context "if maximus is in arena crowd is entertained" do
+  #     it "entertains crowd" do
+  #       arena.add_gladiator(maximus)
+  #       arena.add_gladiator(bilcephalon)
+  #
+  #       arena.entertained
+  #       expect(arena.crowd_entertainment).to eq(true)
+  #     end
+  #   end
+  #   context "if maximus is not in arena crowd is not entertained" do
+  #     it "does not entertain crowd" do
+  #       arena.add_gladiator(bilcephalon)
+  #       arena.add_gladiator(ephates)
+  #
+  #       arena.entertained
+  #       expect(arena.crowd_entertainment).to eq(false)
+  #     end
+  #   end
+  # end
 end

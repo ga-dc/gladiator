@@ -4,6 +4,7 @@ class Arena
   def initialize(name)
     @name = name.capitalize
     @gladiators = []
+    @crowd_entertainment = false
     # [{name: "Alex", weapon: "sword"}, {name: "Maximus", weapon: "trident"}]
   end
   def add_gladiator(name)
@@ -16,7 +17,9 @@ class Arena
   end
   def fight
     if @gladiators.length > 1
-      if @gladiators[0].weapon == @gladiators.last.weapon
+      if @gladiators[0].name == "Maximus" || @gladiators[1].name == "Maximus"
+        @gladiators.delete_if {|i| i.name != "Maximus"}
+      elsif @gladiators[0].weapon == @gladiators.last.weapon
         @gladiators.delete_at(1)
         @gladiators.delete_at(0)
       elsif @gladiators[0].weapon == "Spear"
@@ -48,6 +51,13 @@ class Arena
       end
     end
   end
+  # def entertained
+  #   if @gladiators.include?("Maximus")
+  #     @crowd_entertainment = true
+  #   else
+  #     @crowd_entertainment = false
+  #   end
+  # end
 end
 # rome = Arena.new("Rome")
 # rome.add_gladiator(alex)
