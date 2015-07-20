@@ -15,4 +15,4 @@ class Gladiator
       return @weapon
     end
 
-end #of class
+end 

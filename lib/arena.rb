@@ -14,20 +14,33 @@ class Arena
     end
 
     #Add a gladiator to the arena and push it to the gladiators array if there are less than two gladiators in the arena
-      def add_gladiator(new_gladiator)
-        if gladiators.count < 2
-        @gladiators.push(new.gladiator)
+    #The arena should never have more than 2 gladiators in it at a time
+      def add_gladiator(gladiator)
+        @gladiators.push(gladiator)
+          if gladiators.count > 2
+            gladiators.pop
       end
 
-end #of class Arena
+end
 
 
+#When there are two gladiators in the arena, they fight
+#trident beats spear
+#spear beats club
+#club beats trident
+#smal weapon = both eliminated
 
-#The arena should never have more than 2 gladiators in it at a time
-        #If the number of gladiators = 2, fight #loop? and eliminate
-
-        #assign a weapon
-        #Trident > Spear
-        # Spear > Club
-        # Club > Trident
-        # weapon == weapon eliminate
+def fight()
+  if @gladiators.count == 2
+    if @gladiators.first.weapon == "trident" && @gladiators.last.weapon == "spear"
+      @gladiators.pop
+    elsif @gladiator.first.weapon == "spear" && @gladiator.last.weapon == "club"
+      @gladiators.pop
+    elsif @gladiator.first.weapon == "club" && @gladiator.last.weapon == "trident"
+      @gladiators.pop
+    else @gladiator.first.weapon == @gladiator.last.weapon
+      @gladiators.pop
+      @gladiators.pop
+    end
+  end
+end
