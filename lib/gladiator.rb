@@ -1,2 +1,19 @@
 class Gladiator
-end
+
+  def initialize(name, weapon)
+    @name= name
+    @weapon= weapon
+
+  end
+
+  def name
+  return @name
+  end
+
+  def weapon
+  return @weapon
+  end
+
+
+
+end #end of class
