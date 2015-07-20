@@ -14,7 +14,7 @@ describe Arena do
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
 
   describe "#name" do
-    it "has a name" do
+    it "has a name right now" do
       expect(arena.name).to_not be_nil
     end
 
