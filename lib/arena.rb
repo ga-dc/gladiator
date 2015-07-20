@@ -1,15 +1,19 @@
 class Arena
-  def initialize (name, capital)
+  def initialize (name)
     @name = name
-    @capital = capital
+    @gladiators = []
   end
 
   def name
-    return @name
+    return @name.capitalize
   end
 
-  def capital
-    return @capital.capitalize
+  def gladiators
+    return @gladiators
   end
 
+  def add_gladiator(new_gladiator)
+    if @gladiators.count < 2
+      @gladiators.push(new_gladiator)
+  end
 end
