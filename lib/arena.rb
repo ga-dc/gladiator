@@ -27,8 +27,9 @@ end #end of class
 
 
 
-#if == 2 fight and eliminate losing
+#if == 2 fight
 #assign a weapon
+#determine winner 
 #Trident > Spear
 # Spear > Club
 # Club > Trident
