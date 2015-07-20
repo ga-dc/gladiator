@@ -15,5 +15,11 @@ class Arena
   def add_gladiator(new_gladiator)
     if @gladiators.count < 2
       @gladiators.push(new_gladiator)
+    end
   end
+
+  def fight
+    @spear = spear
+  end
+
 end
