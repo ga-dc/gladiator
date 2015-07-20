@@ -21,12 +21,11 @@ class Arena
             gladiators.delete_at(0)
          elsif gladiators[1].weapon == "Spear" && gladiators[0].weapon == "Trident"
                gladiators.delete_at(1)
+         elsif gladiators[0].weapon == "Club" && gladiators[1].weapon == "Spear"
+            gladiators.delete_at(0)
+         elsif gladiators[1].weapon == "Club" && gladiators[0].weapon == "Spear"
+               gladiators.delete_at(1)
          end
-         # if gladiators[0].weapon == "Club" && gladiators[1].weapon == "Spear"
-            # gladiators.delete_at(0)
-         # elsif gladiators[1].weapon == "Club" && gladiators[0].weapon == "Spear"
-            # gladiators.delete_at(1)
-         # end
   end
 
 end
