@@ -4,7 +4,7 @@ class Gladiator
 
 	def initialize(gladiator_name, gladiator_weapon)
 		@name = gladiator_name
-		@weapon = gladiator_weapon
+		@weapon = gladiator_weapon.capitalize
 	end
 
 end
