@@ -14,14 +14,32 @@ class Arena
   end
 
   def fight
-    if @gladiators.length = 2
+    if @gladiators.count == 2
       case @gladiators[0].weapon
       when "Trident"
-        puts "Lol trident"
+        if @gladiators[1].weapon == "Trident"
+          @gladiators.pop(2)
+        elsif @gladiators[1].weapon == "Spear"
+          @gladiators.delete_at(1)
+        elsif @gladiators[1].weapon == "Club"
+          @gladiators.delete_at(0)
+        end
       when "Spear"
-      	puts "Lol spear"
+      	if @gladiators[1].weapon == "Spear"
+      		@gladiators.pop(2)
+      	elsif @gladiators[1].weapon == "Club"
+      		@gladiators.delete_at(1)
+      	elsif @gladiators[1].weapon == "Trident"
+      		@gladiators.delete_at(0)
+      	end
       when "Club"
-      	puts "Lol club"
+      	if @gladiators[1].weapon == "Club"
+      		@gladiators.pop(2)
+      	elsif @gladiators[1].weapon == "Trident"
+      		@gladiators.delete_at(1)
+      	elsif @gladiators[1].weapon == "Spear"
+      		@gladiators.delete_at(0)
+      	end
       end
     end
   end
