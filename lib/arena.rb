@@ -1,3 +1,4 @@
+require "pry"
 class Arena
   attr_accessor :name, :weapon, :gladiators
 
@@ -12,10 +13,14 @@ class Arena
     if @gladiators.length <= 1
       return false
     end
-    if @gladiators.first.weapon == @gladiators.last.weapon
-      @gladiators.pop(2)
-    elsif @gladiators.first.weapon == "Spear" && @gladiators.last.weapon == "Trident"
-      @gladiators.pop(0)
+    if @gladiators.first.weapon.downcase == @gladiators.last.weapon.downcase
+      @gladiators.clear
+    elsif @gladiators.first.weapon.downcase == "spear" && @gladiators.last.weapon.downcase == "club"
+          @gladiators.first.weapon.downcase == "trident" && @gladiators.last.weapon.downcase == "spear"
+          @gladiators.first.weapon.downcase == "club" && @gladiators.last.weapon.downcase == "trident"
+      @gladiators.delete_at(1)
+    else
+      @gladiators.delete_at(0)
     end
-  end
+ end
 end
