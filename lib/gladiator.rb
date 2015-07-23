@@ -1,15 +1,15 @@
 class Gladiator
   def initialize(gladiator_name, gladiator_weapon)
-   @name = gladiator_name
-   @weapon = gladiator_weapon
+   @gname = gladiator_name
+   @gweapon = gladiator_weapon
   end
 
   def name
-    return @name
+    return @gname
   end
 
   def weapon
-    return @weapon
+    return @gweapon
   end
 
 
