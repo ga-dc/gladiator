@@ -3,7 +3,7 @@ require_relative '../lib/gladiator'
 
 describe Gladiator do
 
-  subject(:gladiator){Gladiator.new("Maximus","Sword")}
+  subject(:gladiator){Gladiator.new("Maximus","Spear")}
 
   describe "#name" do
     it "has a name" do
@@ -12,7 +12,7 @@ describe Gladiator do
     end
     it "has a weapon" do
       expect(gladiator.weapon).to_not be_nil
-      expect(gladiator.weapon).to eq("Sword")
+      expect(gladiator.weapon).to eq("Spear")
     end
   end
 end
