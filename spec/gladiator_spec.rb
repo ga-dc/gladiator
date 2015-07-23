@@ -5,12 +5,13 @@ describe Gladiator do
 
   subject(:gladiator){Gladiator.new("Maximus","Sword")}
 
-  describe "#name" do
-    if "has a name" do
+  describe Gladiator do
+    gladiator = Gladiator.new("Nacho", "Sword")
+    it "has a name" do
       expect(gladiator.name).to_not be_nil
       expect(gladiator.name).to eq("Maximus")
     end
-    if "has a weapon" do
+    it "has a weapon" do
       expect(gladiator.weapon).to_not be_nil
       expect(gladiator.weapon).to eq("Sword")
     end
