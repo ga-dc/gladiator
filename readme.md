@@ -3,6 +3,8 @@
 The Emperor has commissioned you to build a Gladiator Arena. Your life depends on developing a well-thought-out arena, so you have been given tests to make sure
 you build it well.
 
+>Note: UXDI is having project presentations today from 10:30-12:30 and again from 1:30-3:30 in classroom 2. They will be 20 minutes each. Please check them out if you like, and be respectful to your fellow classmates!
+
 ## How to do this assignment
 
 1. In the gladiator folder, run `bundle install` to make sure you have the right gems installed
