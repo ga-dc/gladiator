@@ -15,6 +15,7 @@ def initialize(name, weapon)
   @weapon = weapon
 end
 
+
 end
 
 # Maximus = Gladiator.new("Maximus", "Spear")
