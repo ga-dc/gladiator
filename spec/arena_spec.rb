@@ -104,4 +104,16 @@ describe Arena do
       end
     end
   end
+
+  describe "#remove_gladiator" do
+    it "removes a gladiator from the arena by name" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      expect(arena.gladiators.count).to eq(2)
+      arena.remove_gladiator(maximus)
+      expect(arena.gladiators.count).to eq(1)
+      expect(arena.gladiators).not_to include(maximus)
+      expect(arena.gladiators).to include(bilcephalon)
+    end
+  end
 end

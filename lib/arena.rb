@@ -15,6 +15,12 @@ class Arena
     end
   end
 
+  def remove_gladiator(gladiator)
+    if @gladiators.detect { |g| g.name }
+      @gladiators.delete(gladiator)
+    end
+  end
+
   def fight
     if @gladiators.count == 0
       puts "There are #{@gladiators.count} gladiators in the arena. There shall be no combat!"
@@ -38,5 +44,5 @@ class Arena
       @gladiators
     end
   end
-  
+
 end
