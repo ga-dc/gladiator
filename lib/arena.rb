@@ -8,4 +8,9 @@ class Arena
     @name = name.capitalize
   end
 
+  #establishing gladiators array
+  def gladiators
+    gladiators = []
+  end
+
 end
