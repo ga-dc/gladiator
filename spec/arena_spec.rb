@@ -12,6 +12,7 @@ describe Arena do
   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
+  let(:maximus){Gladiator.new("Maximus","Sword")}
 
   describe "#name" do
     it "has a name" do
@@ -62,6 +63,16 @@ describe Arena do
         arena.add_gladiator(movius)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
+      end
+    end
+
+    context "when Maximus is in arena" do
+      it "Maximus wins and other player killed" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators[0]).to eq(maximus)
       end
     end
 

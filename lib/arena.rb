@@ -1,5 +1,5 @@
-require_relative "gladiator"
-require "pry"
+# require_relative "gladiator"
+# require "pry"
 
 class Arena
   attr_accessor :name, :gladiators
@@ -72,4 +72,4 @@ dupont = Arena.new("dupont")
 dupont.add_gladiator adrian
 dupont.add_gladiator robin
 
-binding.pry
+# binding.pry
