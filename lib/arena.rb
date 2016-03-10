@@ -1,7 +1,7 @@
 class Arena
     attr_accessor :gladiators
 
-    def initialize name
+    def initialize(name)
         @name = name
         @gladiators = []
         @wins = {
@@ -15,12 +15,12 @@ class Arena
         @name.capitalize
     end
 
-    def add_gladiator gladiator
+    def add_gladiator(gladiator)
         gladiators << gladiator if gladiators.size < 2 and
                                 not gladiators.include?(gladiator)
     end
 
-    def remove_gladiator name
+    def remove_gladiator(name)
         gladiators.each do |gladiator|
             if gladiator.name == name
                 gladiators.delete(gladiator)
@@ -35,7 +35,28 @@ class Arena
         false
     end
 
-    def fight
+    def live?(loser)
+        death, life = 'down', 'up'
+        puts "The loser (#{loser.name}) lost the battle with their " +
+             "pathetic #{loser.weapon}\n" +
+             "do they deserve to continue breathing?\n" +
+             "thumbs '#{death}' to end their life, " +
+             "thumbs '#{life}' to save them\n" +
+             "thumbs: "
+        verdict = gets.chomp
+        gladiators.delete(loser) if verdict == death
+    end
+
+    def get_loser
+        if @wins[gladiators[0].weapon.to_sym] == gladiators[1].weapon
+            loser = gladiators[1]
+        else
+            loser = gladiators[0]
+        end
+        loser
+    end
+
+    def fight(loser_dies = true)
         if gladiators.size == 2
             # Maximus should always win
             maximus_i = gladiators.index(gladiators.find {|gladiator|
@@ -47,12 +68,13 @@ class Arena
                 return self.gladiators = []
             end
 
-            if @wins[gladiators[0].weapon.to_sym] == gladiators[1].weapon
-                loser = gladiators[1]
+            loser = get_loser
+            if not loser_dies
+                live?(loser)
             else
-                loser = gladiators[0]
+                gladiators.delete(loser)
             end
-            gladiators.delete(loser)
+
         end
     end
 

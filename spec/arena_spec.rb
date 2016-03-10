@@ -18,9 +18,13 @@ module Helpers
       expect(arena.gladiators.count).to eq(2)
     end
 
-    def can_fight(gladiator1, gladiator2)
+    def start_fight(gladiator1, gladiator2, death = true)
         can_add_multiple_gladiators(gladiator1, gladiator2)
-        arena.fight
+        arena.fight(death)
+    end
+
+    def can_fight_to_death(gladiator1, gladiator2)
+        start_fight(gladiator1, gladiator2)
         expect(arena.gladiators.count).to eq(1)
     end
 end
@@ -101,28 +105,28 @@ describe Arena do
 
     context "when Spear v Trident" do
       it "kills: spear when fighting trident" do
-        can_fight(carpophorus, bilcephalon)
+        can_fight_to_death(carpophorus, bilcephalon)
         expect(arena.gladiators[0]).to eq(bilcephalon)
       end
     end
 
     context "when Maximus in arena" do
       it "makes Maximus win when he should lose" do
-        can_fight(maximus, bilcephalon)
+        can_fight_to_death(maximus, bilcephalon)
         expect(arena.gladiators.first).to eq(maximus)
       end
     end
 
     context "when Club v Spear" do
       it "kills: club when fighting spear" do
-        can_fight(carpophorus, ephates)
+        can_fight_to_death(carpophorus, ephates)
         expect(arena.gladiators.first).to eq(carpophorus)
       end
     end
 
     context "when Trident v Club" do
       it "kills: trident when fighting club" do
-        can_fight(bilcephalon, ephates)
+        can_fight_to_death(bilcephalon, ephates)
         expect(arena.gladiators.first).to eq(ephates)
       end
     end
@@ -134,6 +138,13 @@ describe Arena do
         expect(arena.gladiators.count).to eq(0)
       end
     end
+
+    # context "when a fighter loses" do
+    #   it "determines if loser gets executed" do
+    #       start_fight(carpophorus, cylodeus, false)
+    # =>    TODO: feed gets an input - thumbs 'up' or 'down'
+    #   end
+    # end
   end
 
   describe "#entertain" do
