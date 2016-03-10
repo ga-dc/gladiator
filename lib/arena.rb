@@ -23,22 +23,33 @@ class Arena
         if @gladiators.count == 2
             if @gladiators[0].weapon == @gladiators[1].weapon
                 @gladiators = []
-            end
-            @all_weapons = []
-            @gladiators.each do |glad|
-                @all_weapons << @gladiators[glad].weapon
+            elsif @gladiators[0].weapon == "Trident" && @gladiators[1].weapon == "Spear"
+                @gladiators.delete(@gladiators[1])
+            elsif @gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Club"
+                @gladiators.delete(@gladiators[1])
+            elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon == "Trident"
+                @gladiators.delete(@gladiators[1])
+            elsif @gladiators[1].weapon == "Trident" && @gladiators[0].weapon == "Spear"
+                @gladiators.delete(@gladiators[0])
+            elsif @gladiators[1].weapon == "Spear" && @gladiators[0].weapon == "Club"
+                @gladiators.delete(@gladiators[0])
+            elsif @gladiators[1].weapon == "Club" && @gladiators[0].weapon == "Trident"
+                @gladiators.delete(@gladiators[0])
             end
         end
-        @all_weapons
     end
 
 end
-
+#
+# gladiatrix = Gladiator.new("Anissa", "Club")
+# otherglad = Gladiator.new("Cam", "Trident")
+# arena = Arena.new("Metro")
+# arena.add_gladiator(gladiatrix)
+# arena.add_gladiator(otherglad)
+#
 # binding.pry
 # puts "bugfix"
-# gladiatrix = Gladiator.new("Anissa", "Trident")
-# otherglad = Gladiator.new("Cam", "Spear")
-# thearena = Arena.new("Metro")
-# thearena.add_gladiator(gladiatrix)
+
+#
 # thearena.gladiators => [gladiatrix]
 # thearena.gladiators[0].weapon
