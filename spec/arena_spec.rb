@@ -48,32 +48,32 @@ describe Arena do
       expect(arena.gladiators.count).to eq(2)
     end
   end
-#
-#   describe "#fight" do
-#     context "when there are no gladiators" do
-#       it "does nothing" do
-#         arena.fight
-#         expect(arena.gladiators.count).to eq(0)
-#       end
-#     end
-#
-#     context "when there is one gladiator" do
-#       it "does nothing" do
-#         arena.add_gladiator(maximus)
-#         arena.fight
-#         expect(arena.gladiators.count).to eq(1)
-#       end
-#     end
-#
-#     context "when Spear v Trident" do
-#       it "kills: spear when fighting trident" do
-#         arena.add_gladiator(maximus)
-#         arena.add_gladiator(bilcephalon)
-#         arena.fight
-#         expect(arena.gladiators.count).to eq(1)
-#         expect(arena.gladiators[0]).to eq(bilcephalon)
-#       end
-#     end
+
+  describe "#fight" do
+    context "when there are no gladiators" do
+      it "does nothing" do
+        arena.fight
+        expect(arena.gladiators.count).to eq(0)
+      end
+    end
+
+    context "when there is one gladiator" do
+      it "does nothing" do
+        arena.add_gladiator(maximus)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+      end
+    end
+    # 
+    # context "when Spear v Trident" do
+    #   it "kills: spear when fighting trident" do
+    #     arena.add_gladiator(maximus)
+    #     arena.add_gladiator(bilcephalon)
+    #     arena.fight
+    #     expect(arena.gladiators.count).to eq(1)
+    #     expect(arena.gladiators[0]).to eq(bilcephalon)
+    #   end
+    # end
 #
 #     context "when Club v Spear" do
 #       it "kills: club when fighting spear" do
@@ -103,5 +103,5 @@ describe Arena do
 #         expect(arena.gladiators.count).to eq(0)
 #       end
 #     end
-#   end
+   end
  end

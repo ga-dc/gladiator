@@ -14,4 +14,11 @@ class Arena
       end
     end
 
+    def fight
+      if @gladiators.length < 2
+      return nil
+      else
+      end
+    end
+
 end
