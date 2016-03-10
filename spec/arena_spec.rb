@@ -12,6 +12,7 @@ describe Arena do
   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
+  let(:bob){Gladiator.new("Bob", "Spear")}
 
   describe "#name" do
     it "has a name" do
@@ -67,7 +68,7 @@ describe Arena do
 
     context "when Spear v Trident" do
       it "kills: spear when fighting trident" do
-        arena.add_gladiator(maximus)
+        arena.add_gladiator(bob)
         arena.add_gladiator(bilcephalon)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
@@ -77,11 +78,11 @@ describe Arena do
 
     context "when Club v Spear" do
       it "kills: club when fighting spear" do
-        arena.add_gladiator(maximus)
+        arena.add_gladiator(bob)
         arena.add_gladiator(ephates)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(maximus)
+        expect(arena.gladiators.first).to eq(bob)
       end
     end
 
@@ -104,6 +105,15 @@ describe Arena do
       end
     end
 
+    context "when Maximus is battling" do
+      it "declares Maximus the winner" do
+        arena.add_gladiator(bilcephalon)
+        arena.add_gladiator(maximus)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators.first).to eq(maximus)
+      end
+    end
   end
 
   describe "#remove_by_name" do
