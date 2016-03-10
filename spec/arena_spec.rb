@@ -7,7 +7,7 @@ require './lib/arena'
 require './lib/gladiator'
 
 describe Arena do
-  let(:arena){Arena.new("megalopolis")}
+  let(:arena){Arena.new("Thunderdome")}
   let(:maximus){Gladiator.new("Maximus","Spear")}
   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
   let(:ephates){Gladiator.new("Ephates","Club")}
@@ -19,7 +19,7 @@ describe Arena do
     end
 
     it "is always capitalized" do
-      expect(arena.name).to eq("Megalopolis")
+      expect(arena.name).to eq("Thunderdome")
     end
   end
 
