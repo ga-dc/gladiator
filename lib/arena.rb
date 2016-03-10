@@ -12,7 +12,7 @@ class Arena
 
     #establishing gladiators array
     @gladiators = []
-  end
+  end #initialize end
 
   #adding gladiators to the arena
   def add_gladiator(gladiator)
@@ -22,8 +22,8 @@ class Arena
 
       # pushes the gladiator into the gladiators array
       @gladiators << gladiator
-    end
-  end
+    end #if end
+  end #add gladiator end
 
   #making the gladiators fight
   def fight
@@ -31,13 +31,26 @@ class Arena
     #do nothing
     if @gladiators.length == 0 || @gladiators.length == 1
 
-    #do nothing
-    # elsif @gladiators.length == 1
-
       #fight!
     elsif @gladiators.length ==2
 
-    end
-  end
+      #making a case statement
+      case
+        #trident beats spear
+      when '@gladiators[0].weapon == "Spear"', '@gladiators[1].weapon == "Trident"'
 
-end
+        #spear gladiator is killed (or removed array)
+        @gladiators.delete(@gladiators[0])
+
+
+      end #case end
+
+
+
+    end #if end
+  end #fight end
+
+
+
+
+end #class end
