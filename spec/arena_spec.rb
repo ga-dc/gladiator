@@ -50,6 +50,17 @@ describe Arena do
     end
   end
 
+  describe "#remove_gladiator" do
+    it "removes named player from the arena" do
+      arena.add_gladiator(movius)
+      arena.add_gladiator(bilcephalon)
+      arena.remove_gladiator("Movius")
+      expect(arena.gladiators).to_not include(movius)
+      expect(arena.gladiators.count).to eq(1)
+    end
+  end
+
+
   describe "#fight" do
     context "when there are no gladiators" do
       it "does nothing" do
