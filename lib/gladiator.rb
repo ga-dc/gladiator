@@ -6,11 +6,11 @@ class Gladiator
     @weapon = weapon
     @gladiator = gladiator
   end
-#
-#   def gladiator (@name, weapon)
-#
-#   end
-#
+  #
+  # def gladiator (@name, weapon)
+  #
+  # end
+
 #   def weapon.allow =
 #     [Spear, Club, Trident, Sword, Chains]
 #
