@@ -53,14 +53,14 @@ describe Arena do
 
   describe "#fight" do
     context "when there are no gladiators" do
-      xit "does nothing" do
+      it "does nothing" do
         arena.fight
         expect(arena.gladiators.count).to eq(0)
       end
     end
 
     context "when there is one gladiator" do
-      xit "does nothing" do
+      it "does nothing" do
         arena.add_gladiator(maximus)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
@@ -68,7 +68,7 @@ describe Arena do
     end
 
     context "when Spear v Trident" do
-      xit "kills: spear when fighting trident" do
+      it "kills: spear when fighting trident" do
         arena.add_gladiator(maximus)
         arena.add_gladiator(bilcephalon)
         arena.fight
@@ -78,7 +78,7 @@ describe Arena do
     end
 
     context "when Club v Spear" do
-      xit "kills: club when fighting spear" do
+      it "kills: club when fighting spear" do
         arena.add_gladiator(maximus)
         arena.add_gladiator(ephates)
         arena.fight
@@ -88,7 +88,7 @@ describe Arena do
     end
 
     context "when Trident v Club" do
-      xit "kills: trident when fighting club" do
+      it "kills: trident when fighting club" do
         arena.add_gladiator(bilcephalon)
         arena.add_gladiator(ephates)
         arena.fight
@@ -98,7 +98,7 @@ describe Arena do
     end
 
     context "when same Weapons" do
-      xit "kills: both if their weapons are the same" do
+      it "kills: both if their weapons are the same" do
         arena.add_gladiator(ephates)
         arena.add_gladiator(cylodeus)
         arena.fight
