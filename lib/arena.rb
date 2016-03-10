@@ -36,17 +36,20 @@ class Arena
         puts "Maximus wins again! He always does . . ."
         @gladiators.delete_if { |gladiator| gladiator.name != "Maximus" }
       elsif @gladiators.first.weapon == @gladiators.last.weapon
+        puts "Both gladiators have perished in combat!"
         until @gladiators.count == 0
           @gladiators.pop
         end
-      elsif (@gladiators.first.weapon == "Gladius") && (@gladiators.last.weapon == "Sica")
-        @gladiators.pop
-      elsif (@gladiators.first.weapon == "Sica") && (@gladiators.last.weapon == "Fuscina")
-        @gladiators.pop
-      elsif (@gladiators.first.weapon == "Fuscina") && (@gladiators.last.weapon == "Gladius")
-        @gladiators.pop
+      elsif ((@gladiators.first.weapon == "Gladius") && (@gladiators.last.weapon == "Sica")) ||
+        ((@gladiators.first.weapon == "Sica") && (@gladiators.last.weapon == "Fuscina")) ||
+        ((@gladiators.first.weapon == "Fuscina") && (@gladiators.last.weapon == "Gladius"))
+        puts "#{@gladiators.last.name} has been defeated! Respond with 'pollice verso' if he should die, or 'vivat' if he should live."
+        response = gets.chomp.downcase
+        (response == "vivat") ? @gladiators.shift : @gladiators.pop
       else
-        @gladiators.shift
+        puts "#{@gladiators.first.name} has been defeated! Respond with 'pollice verso' if he should die, or 'vivat' if he should live."
+        response = gets.chomp.downcase
+        (response == "vivat") ? @gladiators.pop : @gladiators.shift
       end
       @gladiators
     end
