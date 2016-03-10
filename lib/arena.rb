@@ -2,7 +2,7 @@ class Arena
   attr_accessor :gladiators
   attr_reader :name
 
-  ARENA_SIZE = 2
+  ARENA_SIZE = 2 #An arena can only hold two gladiators at a time
   TRIDENT = "Trident"
   SPEAR = "Spear"
   CLUB = "Club"
@@ -16,8 +16,7 @@ class Arena
     gladiators << gladiator if gladiators.length < ARENA_SIZE
   end
 
-  def fight(life=false) #life IS fair by default
-    # First gladiator has strongest weapon in IFS. ELSE is when last gladiator has strongest weapon
+  def fight(life=false) #life IS fair by default aka it is false that life isn't fair
     return if gladiators.length < ARENA_SIZE
 
     if maximus?
@@ -30,13 +29,13 @@ class Arena
         gladiators.clear
       elsif (champion == TRIDENT && challenger == SPEAR) ||
         (champion == SPEAR && challenger == CLUB) ||
-        (champion == CLUB && challenger == TRIDENT)
+        (champion == CLUB && challenger == TRIDENT) #all conditions where first gladiator wins
         if life_isnt_fair(life)
           gladiators.shift
         else
           gladiators.pop
         end
-      else
+      else #all conditions where first gladiator loses
          if life_isnt_fair(life)
            gladiators.pop
          else
