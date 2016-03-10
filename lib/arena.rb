@@ -1,4 +1,4 @@
-# require 'pry'
+require 'pry'
 require_relative 'gladiator'
 
 class Arena
@@ -39,6 +39,12 @@ class Arena
   def remove(wombat)
     gladiators.delete_if {|gladiator| gladiator.name == "#{wombat}"}
   end
+  def entertained?
+    if gladiators[0].name == 'Maximus' || gladiators[1].name == 'Maximus'
+      true
+    else false
+    end
+  end
 end
 
 #testing purposes:
@@ -48,4 +54,4 @@ ren = Gladiator.new("Ren","Spear")
 arena.add_gladiator(max)
 arena.add_gladiator(ren)
 
-# binding.pry
+binding.pry
