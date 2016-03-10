@@ -1,3 +1,4 @@
+# require "pry"
 class Gladiator
   attr_accessor :name, :weapon
 
@@ -22,4 +23,7 @@ class Gladiator
 
 end
 
-gladiator = Gladiator.new("Patrick", "trident")
+gladiator = Gladiator.new("Patrick", "pear")
+
+# binding.pry
+# puts "done"
