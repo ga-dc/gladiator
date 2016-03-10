@@ -28,12 +28,16 @@ class Arena
       gladiators.each do |gladiator|
         if @gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Trident"
           @gladiators.shift
+          puts @gladiators[0].name + " is the winner!"
         elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon == "Spear"
           @gladiators.shift
+          puts @gladiators[0].name + " is the winner!"
         elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon == "Trident"
-          @gladiators.pop()
+          @gladiators.pop
+          puts @gladiators[0].name + " is the winner!"
         elsif @gladiators[0].weapon == @gladiators[1].weapon
           @gladiators.pop(2)
+          puts "Both gladiators have been killed."
         end
       end
     end
