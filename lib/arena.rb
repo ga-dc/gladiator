@@ -27,14 +27,25 @@ class Arena
     else
       puts "#{@gladiators[0].name} fights #{@gladiators[1].name}."
       # puts "#{1gladiator.name} has a #{1gladiator.weapon} and #{2gladiator.name} has a #{2gladiator.weapon}"
-      if (@gladiators[0].weapon == "Spear") && (@gladiators[1].weapon == "Trident")
+      if ((@gladiators[0].weapon == "Spear") && (@gladiators[1].weapon == "Trident") ||
+        (@gladiators[0].weapon == "Club") && (@gladiators[1].weapon == "Spear") ||
+        (@gladiators[0].weapon == "Trident") && (@gladiators[1].weapon == "Club"))
+        remove_gladiator(@gladiators[0])
         @gladiators.delete(@gladiators[0])
-        # @gladiators.delete_if{|name, weapon| weapon.include?("Spear")}
+      elsif ((@gladiators[1].weapon == "Spear") && (@gladiators[0].weapon == "Trident") ||
+        (@gladiators[1].weapon == "Club") && (@gladiators[0].weapon == "Spear") ||
+        (@gladiators[1].weapon == "Trident") && (@gladiators[0].weapon == "Club"))
+        @gladiators.delete(@gladiators[1])
+      elsif @gladiators[0].weapon == @gladiators[1].weapon
+        @gladiators = []
       end
     end
   end
 end
 
+def remove_gladiator(gladiator)
+  p "#{gladiator.name} has died!"
+end
 
 
 #this loops through the gladiators array looking for a spear and a trident
