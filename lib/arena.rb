@@ -1,4 +1,4 @@
-require "pry"
+# require "pry"
 
 # Arena has a name
 # name is always capitalized
@@ -14,6 +14,9 @@ require "pry"
 # fight when same Weapons kills: both if their weapons are the same
 
 class Arena
+
+  attr_accessor :name, :gladiators
+
   def initialize name
     @name = name.upcase
     @gladiators = []
@@ -24,4 +27,4 @@ class Arena
   end
 end
 
-binding.pry
+# binding.pry

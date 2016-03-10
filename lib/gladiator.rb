@@ -1,12 +1,15 @@
-require "pry"
-# Gladiator has a name
-# Glasdiator has a weopon
-rspec ./spec/gladiator_spec.rb:13 #name has a weapon
+# require "pry"
+
 class Gladiator
+
+  attr_accessor :name, :weapon
+
   def initialize name, weapon
     @name = name
     @weapon = weapon
   end
 end
 
-binding.pry
+gladiator = Gladiator.new('cam', 'trident')
+
+# binding.pry
