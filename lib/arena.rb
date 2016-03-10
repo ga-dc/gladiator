@@ -18,7 +18,7 @@ class Arena
   attr_accessor :name, :gladiators
 
   def initialize name
-    @name = name.upcase
+    @name = name.capitalize
     @gladiators = []
   end
   def add_gladiator
