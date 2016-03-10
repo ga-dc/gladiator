@@ -18,29 +18,31 @@ describe Arena do
       expect(arena.name).to_not be_nil
     end
 
-    xit "is always capxitalized" do
+    it "is always capitalized" do
       expect(arena.name).to eq("Megalopolis")
     end
   end
 
   describe "#gladiators" do
-    xit "starts empty" do
+    it "starts empty" do
       expect(arena.gladiators).to eq([])
     end
   end
 
   describe "#add_gladiator" do
 
-    xit "adds a gladiator to the arena" do
+    it "adds a gladiator to the arena" do
       arena.add_gladiator(maximus)
       expect(arena.gladiators.count).to eq(1)
     end
-    xit "can add multiple gladiators" do
+
+    it "can add multiple gladiators" do
       arena.add_gladiator(maximus)
       arena.add_gladiator(bilcephalon)
       expect(arena.gladiators.count).to eq(2)
     end
-    xit "does not have more than two gladiators at once" do
+
+    it "does not have more than two gladiators at once" do
       arena.add_gladiator(maximus)
       arena.add_gladiator(bilcephalon)
       arena.add_gladiator(ephates)
