@@ -10,12 +10,11 @@ class Arena
   end
 
   def add_gladiator (name)
-    @gladiators< 2
-    @gladiators << name
-    
+    if @gladiators.length < 2
+     @gladiators << name
+   else "You have 2 Gladiators!"
   end
-
-
+end
 
 
 end
