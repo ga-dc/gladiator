@@ -9,29 +9,29 @@ class Arena# < ActiveRecord::Base
   def initialize(name)
     @name = name.capitalize
     @gladiators = []
-
   end
-
-  def add_gladiator(gladiator)
-    # array should hold no more than 2 gladiators at a time
-      @gladiators << gladiator
-      puts "adding gladiator #{gladiator}"
-    end
-  end
-
-  def fight
-    if @gladiators.length = 2
-      #if @gladiators
-    end
-    #fight!
-    # have to assign winning combinations based on weapons, not values?
-    #end
-
-    # weapons: set them up to have value based on place in weapons array
-
-    # fight
-
-  end
+@gladiators[0].weapon 
+  #
+  # def add_gladiator(gladiator)
+  #   # array should hold no more than 2 gladiators at a time
+  #     @gladiators << gladiator
+  #     puts "adding gladiator #{gladiator}"
+  #   end
+  # end
+  #
+  # def fight
+  #   if @gladiators.length = 2
+  #     #if @gladiators
+  #   end
+  #   #fight!
+  #   # have to assign winning combinations based on weapons, not values?
+  #   #end
+  #
+  #   # weapons: set them up to have value based on place in weapons array
+  #
+  #   # fight
+  #
+  # end
 
 end
 
