@@ -64,7 +64,7 @@ describe Arena do
         expect(arena.gladiators.count).to eq(1)
       end
     end
-    # 
+
     # context "when Spear v Trident" do
     #   it "kills: spear when fighting trident" do
     #     arena.add_gladiator(maximus)
@@ -95,13 +95,13 @@ describe Arena do
 #       end
 #     end
 #
-#     context "when same Weapons" do
-#       it "kills: both if their weapons are the same" do
-#         arena.add_gladiator(ephates)
-#         arena.add_gladiator(cylodeus)
-#         arena.fight
-#         expect(arena.gladiators.count).to eq(0)
-#       end
-#     end
+    context "when same Weapons" do
+      it "kills: both if their weapons are the same" do
+        arena.add_gladiator(ephates)
+        arena.add_gladiator(cylodeus)
+        arena.fight
+        expect(arena.gladiators.count).to eq(0)
+      end
+    end
    end
  end
