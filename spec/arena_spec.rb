@@ -8,6 +8,7 @@ require './lib/gladiator'
 
 describe Arena do
     let(:arena){Arena.new("megalopolis")}
+    let(:juan){Gladiator.new("Juan", "Spear")}
     let(:maximus){Gladiator.new("Maximus","Spear")}
     let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
     let(:ephates){Gladiator.new("Ephates","Club")}
@@ -83,13 +84,14 @@ describe Arena do
                 arena.add_gladiator(bilcephalon)
                 arena.fight
                 expect(arena.gladiators.count).to eq(1)
-                expect(arena.gladiators[0]).to include(:name => 'Maximus')
+                expect(arena.gladiators[0]).to eq(maximus)
             end
         end
 
+        # Update this to not include Maximus
         context "when Spear v Trident" do
             it "kills: spear when fighting trident" do
-                arena.add_gladiator(maximus)
+                arena.add_gladiator(juan)
                 arena.add_gladiator(bilcephalon)
                 arena.fight
                 expect(arena.gladiators.count).to eq(1)
