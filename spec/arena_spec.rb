@@ -50,6 +50,24 @@ describe Arena do
         end
     end
 
+    # Add a method to check to see if the crowd is entertained (.entertained?). The crowd is only entertained if Maximus is in the arena.
+    describe "#entertained?" do
+        context "if Maximus is in arena" do
+            it "returns true" do
+                arena.add_gladiator(maximus)
+                arena.add_gladiator(bilcephalon)
+                expect(arena.entertained?).to be true
+            end
+        end
+        context "if Maximus if not in arena" do
+            it "returns false" do
+                arena.add_gladiator(bilcephalon)
+                arena.add_gladiator(ephates)
+                expect(arena.entertained?).to be false
+            end
+        end
+    end
+
 
     # Add a method to remove gladiators from the arena by name
     describe "#remove_glad" do
