@@ -5,10 +5,15 @@ class Arena
 
     @name = name.capitalize
     @weapon = weapon
-    @gladiator = gladiator
+    @gladiator = []
 
 
   end
+
+  def add_gladiator (name)
+    @gladiator << name
+  end
+
 
 
 
