@@ -29,6 +29,7 @@ describe Arena do
     end
   end
 
+
   describe "#add_gladiator" do
 
     it "adds a gladiator to the arena" do
