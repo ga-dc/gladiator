@@ -1,5 +1,5 @@
-require_relative "gladiator"
-require "pry"
+# require_relative "gladiator"
+# require "pry"
 
 class Arena
   attr_accessor :name, :gladiators
@@ -28,6 +28,12 @@ class Arena
       gladiators.each do |gladiator|
         if @gladiators[0].weapon == "Spear" && @gladiators[1].weapon = "Trident"
           @gladiators.shift
+        elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon = "Spear"
+          @gladiators.shift
+        elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon = "Trident"
+          @gladiators.pop()
+        elsif @gladiators[0].weapon == @gladiators[1].weapon
+          @gladiators.pop(2)
         end
       end
     end
@@ -35,9 +41,9 @@ class Arena
 
 end
 
-adrian = Gladiator.new("adrian", "club")
-robin = Gladiator.new("robin", "spear")
+# adrian = Gladiator.new("adrian", "club")
+# robin = Gladiator.new("robin", "spear")
+#
+# dupont = Arena.new("dupont")
 
-dupont = Arena.new("dupont")
-
-binding.pry
+# binding.pry
