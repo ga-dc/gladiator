@@ -1,3 +1,5 @@
+#require "pry"
+
 class Gladiator
 
   attr_accessor :name, :weapon
@@ -10,3 +12,6 @@ class Gladiator
 end
 
 maximus = Gladiator.new("Maximus", "Sword")
+
+# binding.pry
+# puts "Done."
