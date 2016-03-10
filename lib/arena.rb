@@ -1,3 +1,7 @@
+require 'pry'
+
+require_relative 'gladiator'
+
 class Arena
   attr_accessor :name, :gladiators
 
@@ -48,24 +52,53 @@ class Arena
  def sort_win
    if gladiators[0].weapon == "Club"
      if gladiators[1].weapon == "Spear"
-       swap_players
+       swap_gladiators
      end
    elsif gladiators[0].weapon == "Spear"
      if gladiators[1].weapon == "Trident"
-       swap_players
+       swap_gladiators
      end
    else
      if gladiators[1].weapon == "Club"
-       swap_players
+       swap_gladiators
      end
    end
  end
 
  # Should be used to put losing player at the top of the array.
- def swap_players
+ def swap_gladiators
    temp = gladiators[0]
    @gladiators[0] = gladiators[1]
    @gladiators[1] = temp
  end
 
+ # Removes a gladiator specified by name from the arena.  Returns the removed gladiator
+ # or false if no specified gladiator in in the arena.
+ def remove_gladiator(name)
+   if gladiators.empty? #TODO: Could be cleaner
+     return false
+   end
+   if gladiators[0].name != name
+     if gladiators[1].name != name
+       return false
+     else
+       return gladiators.pop
+     end
+   else
+     if is_able?
+       swap_gladiators
+     end
+     return gladiators.pop
+   end
+ end
+
 end
+
+maximus = Gladiator.new("Maximus","Trident")
+tim = Gladiator.new("Tim", "Club")
+stan = Gladiator.new("Chebbins", "Spear")
+triborg = Gladiator.new("Triborg","Trident")
+
+arena = Arena.new("Hallway")
+
+binding.pry
