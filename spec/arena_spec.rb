@@ -133,4 +133,38 @@ describe Arena do
       end
     end
   end
+
+  describe "#entertained?" do
+    context "when maximus is in the arena" do
+      it "entertains the crowd" do
+        arena.add_gladiator(bilcephalon)
+        arena.add_gladiator(maximus)
+        expect(arena.entertained?).to be(true)
+      end
+    end
+
+    context "when maximus is not in the arena" do
+      it "doesn't entertain the crowd" do
+        arena.add_gladiator(bilcephalon)
+        arena.add_gladiator(bob)
+        expect(arena.entertained?).to be(false)
+      end
+    end
+  end
+
+  describe "#life_isnt_fair" do
+    context "when the audience thumbs up" do
+      it "removes the losing gladiator" do
+      end
+    end
+
+    context "when the audience thumbs down" do
+      it "removes the winning gladiator" do
+      end
+    end
+
+    end
+  end
+
+
 end

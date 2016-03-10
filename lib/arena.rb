@@ -20,7 +20,7 @@ class Arena
     # First gladiator has strongest weapon in IFS. ELSE is when last gladiator has strongest weapon
     return if gladiators.length < ARENA_SIZE
 
-    if gladiators.any?{|gladiator| gladiator.name == "Maximus"}
+    if maximus_is_here?
       gladiators.select!{|gladiator| gladiator.name == "Maximus"}
     else
       champion = gladiators.first.weapon
@@ -37,14 +37,23 @@ class Arena
       else
         gladiators.shift
       end
-
     end
-
   end
 
   def remove_by_name(n)
     gladiators.reject! do |gladiator|
       gladiator.name == n
     end
+  end
+
+  def entertained?
+    maximus_is_here?
+  end
+
+
+# HELPER METHODS BELOW!
+
+  def maximus_is_here?
+    gladiators.any?{|gladiator| gladiator.name == "Maximus"}
   end
 end
