@@ -13,3 +13,4 @@ class Gladiator
   def weapon
     return @weapon
   end
+end
