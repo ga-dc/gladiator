@@ -16,8 +16,13 @@ class Arena
 
   def add_gladiator(gladiator)
 
-    #pushes the gladiator into the gladiators array
-    @gladiators << gladiator
+    #no more gladiators can be added to array if the length is longer than 2
+    if @gladiators.length < 2
+
+      # pushes the gladiator into the gladiators array
+      @gladiators << gladiator
+    end
+
   end
 
 end
