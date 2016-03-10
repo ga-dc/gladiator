@@ -20,12 +20,16 @@ class Arena
 
   def fight
     #these check to see if there's less than 2 gladiators in the arena
-    if @gladiators.count == 0
-      p "No gladiators in the arena! Please send 'em in.'"
-    elsif @gladiators.count == 1
-      p "Only one gladiator! Please add one more to FIGHT."
+    if @gladiators.count < 2
+      p "There are #{@gladiators.count} in the arena! Two gladiators are needed to fight."
+    elsif @gladiators[0].name == "Maximus"
+      @gladiators.delete_at(1)
+      p "#{@gladiators[0].name} has won!"
+    elsif @gladiators[1].name == "Maximus"
+      @gladiators.delete_at(0)
+      p "#{@gladiators[1].name} has won!"
     else
-      puts "#{@gladiators[0].name} fights #{@gladiators[1].name}."
+      puts "#{@gladiators[0].name} has a #{@gladiators[0].weapon} and is fighting #{@gladiators[1].name}, who has a #{@gladiators[1].weapon}."
       # puts "#{1gladiator.name} has a #{1gladiator.weapon} and #{2gladiator.name} has a #{2gladiator.weapon}"
       if ((@gladiators[0].weapon == "Spear") && (@gladiators[1].weapon == "Trident") ||
         (@gladiators[0].weapon == "Club") && (@gladiators[1].weapon == "Spear") ||
@@ -37,16 +41,17 @@ class Arena
         (@gladiators[1].weapon == "Trident") && (@gladiators[0].weapon == "Club"))
         @gladiators.delete(@gladiators[1])
       elsif @gladiators[0].weapon == @gladiators[1].weapon
+        p "Both #{@gladiators[0].name} and #{@gladiators[1].name} have died!"
         @gladiators = []
       end
     end
   end
-end
 
 def remove_gladiator(gladiator)
   p "#{gladiator.name} has died!"
 end
 
+end
 
 #this loops through the gladiators array looking for a spear and a trident
 # @gladiators.each do |name, weapon|
