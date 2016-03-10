@@ -6,9 +6,12 @@ require 'spec_helper'
 require './lib/arena'
 require './lib/gladiator'
 
+# Note: need to type "up" for all get.chomp responses in order for tests to pass
+
 describe Arena do
   let(:arena){Arena.new("megalopolis")}
   let(:maximus){Gladiator.new("Maximus","Spear")}
+  let(:borealis){Gladiator.new("Borealis","Spear")}
   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
@@ -67,7 +70,7 @@ describe Arena do
 
     context "when Spear v Trident" do
       it "kills: spear when fighting trident" do
-        arena.add_gladiator(maximus)
+        arena.add_gladiator(borealis)
         arena.add_gladiator(bilcephalon)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
@@ -101,6 +104,29 @@ describe Arena do
         arena.add_gladiator(cylodeus)
         arena.fight
         expect(arena.gladiators.count).to eq(0)
+      end
+    end
+  end
+
+  describe "#remove_gladiator" do
+    context "when removing gladiator" do
+      it "removes gladiator when remove function is run" do
+        arena.add_gladiator(ephates)
+        arena.add_gladiator(cylodeus)
+        arena.remove_gladiator("Cylodeus")
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators.first).to eq(ephates)
+      end
+    end
+  end
+
+  describe "#entertained?" do
+    context "audience entertainment" do
+      it "returns true if Maximus is in fight" do
+        arena.add_gladiator(ephates)
+        arena.add_gladiator(maximus)
+        arena.fight
+        expect(arena.entertained?).to eq(true)
       end
     end
   end

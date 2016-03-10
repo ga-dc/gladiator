@@ -1,12 +1,16 @@
-require 'pry'
+# require 'pry'
+require_relative 'gladiator'
 
 class Arena
 
-  attr_accessor :name, :gladiators
+  attr_accessor :name, :gladiators, :battle, :audience_response
 
   def initialize(name)
     @name = name.capitalize
     @gladiators = []
+    @battle = []
+    @gladiator_names = []
+    @audience_response = ""
   end
 
   def add_gladiator(gladiator)
@@ -17,21 +21,70 @@ class Arena
 
   def fight
     if @gladiators.length == 2
-      if @gladiators.include?('Trident') and @gladiators.include?('Spear')
-        if @gladiator[0].include?('Trident')
-          @gladiator.delete_at(1)
+      @battle = @gladiators.map do |gladiator|
+        gladiator.weapon
+      end
 
-          puts "Hello"
+      @gladiator_names = @gladiators.map do |gladiator|
+        gladiator.name
+      end
+
+      @battle.sort!
+
+      puts "Do you want the winner to live or die? (Type up for live or down for die)"
+      @audience_response = gets.chomp
+      @audience_response.downcase!
+
+      if @gladiator_names.include?("Maximus")
+        if @audience_response == "up"
+          @gladiators.delete_if{|gladiator| gladiator.name != "Maximus"}
         else
-          @gladiator.delete_at(0)
+          @gladiators.delete_if{|gladiator| gladiator.name == "Maximus"}
         end
+      elsif @battle == ["Spear", "Trident"]
+        if @audience_response == "up"
+          @gladiators.delete_if{|gladiator| gladiator.weapon == "Spear"}
+        else
+          @gladiators.delete_if{|gladiator| gladiator.weapon == "Trident"}
+        end
+      elsif @battle == ["Club", "Spear"]
+        if @audience_response == "up"
+          @gladiators.delete_if{|gladiator| gladiator.weapon == "Club"}
+        else
+          @gladiators.delete_if{|gladiator| gladiator.weapon == "Spear"}
+        end
+      elsif @battle == ["Club", "Trident"]
+        if @audience_response == "up"
+          @gladiators.delete_if{|gladiator| gladiator.weapon == "Trident"}
+        else
+          @gladiators.delete_if{|gladiator| gladiator.weapon == "Club"}
+        end
+      else
+        @gladiators.pop
+        @gladiators.pop
       end
     end
   end
 
-end
-# 
-# maximus = Gladiator.new("Maximus","Spear")
-# bilcephalon = Gladiator.new("Bilcephalon","Trident")
+  def remove_gladiator(name)
+    @gladiators.delete_if{|gladiator| gladiator.name == name}
+  end
 
-binding.pry
+  def entertained?
+    if @gladiator_names.include?("Maximus")
+      return true
+    else
+      return false
+    end
+  end
+
+end
+#
+# maximus = Gladiator.new("Caitlin","Trident")
+# ephates = Gladiator.new("Ephates","Club")
+# arena = Arena.new("megalopolis")
+# arena.add_gladiator(maximus)
+# arena.add_gladiator(ephates)
+# arena.fight
+#
+# binding.pry
