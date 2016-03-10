@@ -85,23 +85,23 @@ describe Arena do
       end
     end
 
-    context "when Trident v Club" do
-      it "kills: trident when fighting club" do
-        arena.add_gladiator(bilcephalon)
-        arena.add_gladiator(ephates)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(ephates)
-      end
-    end
-
-    context "when same Weapons" do
-      it "kills: both if their weapons are the same" do
-        arena.add_gladiator(ephates)
-        arena.add_gladiator(cylodeus)
-        arena.fight
-        expect(arena.gladiators.count).to eq(0)
-      end
-    end
+    # context "when Trident v Club" do
+    #   it "kills: trident when fighting club" do
+    #     arena.add_gladiator(bilcephalon)
+    #     arena.add_gladiator(ephates)
+    #     arena.fight
+    #     expect(arena.gladiators.count).to eq(1)
+    #     expect(arena.gladiators.first).to eq(ephates)
+    #   end
+    # end
+    #
+    # context "when same Weapons" do
+    #   it "kills: both if their weapons are the same" do
+    #     arena.add_gladiator(ephates)
+    #     arena.add_gladiator(cylodeus)
+    #     arena.fight
+    #     expect(arena.gladiators.count).to eq(0)
+    #   end
+    # end
   end
 end
