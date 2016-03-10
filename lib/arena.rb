@@ -105,7 +105,12 @@ class Arena
      end
      return true
    end
-   return true
+   return false
+ end
+
+# returns true if maximus is in the arena.
+ def entertained?
+   return maximus?
  end
 
 end
