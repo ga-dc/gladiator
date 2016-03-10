@@ -30,16 +30,21 @@ class Arena
 
     def fight
         if gladiators.size == 2
+            # Maximus should always win
+            maximus_i = gladiators.index(gladiators.find {|gladiator|
+                                             gladiator.name == "Maximus"})
+            return gladiators.delete_at(1-maximus_i) if maximus_i
+
             if gladiators[0].weapon == gladiators[1].weapon
-                self.gladiators = []
-            else
-                if @wins[gladiators[0].weapon.to_sym] == gladiators[1].weapon
-                    loser = gladiators[1]
-                else
-                    loser = gladiators[0]
-                end
-                gladiators.delete(loser)
+                return self.gladiators = []
             end
+
+            if @wins[gladiators[0].weapon.to_sym] == gladiators[1].weapon
+                loser = gladiators[1]
+            else
+                loser = gladiators[0]
+            end
+            gladiators.delete(loser)
         end
     end
 

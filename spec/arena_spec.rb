@@ -17,11 +17,18 @@ module Helpers
       arena.add_gladiator(gladiator2)
       expect(arena.gladiators.count).to eq(2)
     end
+
+    def can_fight(gladiator1, gladiator2)
+        can_add_multiple_gladiators(gladiator1, gladiator2)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+    end
 end
 
 describe Arena do
   let(:arena){Arena.new("megalopolis")}
   let(:maximus){Gladiator.new("Maximus","Spear")}
+  let(:carpophorus){Gladiator.new("Carpophorus", "Spear")}
   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
@@ -94,27 +101,28 @@ describe Arena do
 
     context "when Spear v Trident" do
       it "kills: spear when fighting trident" do
-        can_add_multiple_gladiators(maximus, bilcephalon)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
+        can_fight(carpophorus, bilcephalon)
         expect(arena.gladiators[0]).to eq(bilcephalon)
+      end
+    end
+
+    context "when Maximus in arena" do
+      it "makes Maximus win when he should lose" do
+        can_fight(maximus, bilcephalon)
+        expect(arena.gladiators.first).to eq(maximus)
       end
     end
 
     context "when Club v Spear" do
       it "kills: club when fighting spear" do
-        can_add_multiple_gladiators(maximus, ephates)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(maximus)
+        can_fight(carpophorus, ephates)
+        expect(arena.gladiators.first).to eq(carpophorus)
       end
     end
 
     context "when Trident v Club" do
       it "kills: trident when fighting club" do
-        can_add_multiple_gladiators(bilcephalon, ephates)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
+        can_fight(bilcephalon, ephates)
         expect(arena.gladiators.first).to eq(ephates)
       end
     end
