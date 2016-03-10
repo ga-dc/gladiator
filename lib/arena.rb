@@ -21,7 +21,11 @@ class Arena
 
   def fight
     if @gladiators.count == 2
-      if @weapon == (["Spear","Trident"] or ["Trident", "Spear"])
+      if @gladiators[0] == 'maximus'
+        @gladiators.delete(@gladiators[1])
+      elsif  @gladiators[1] == 'maximus'
+        @gladiators.delete(@gladiators[0])
+      elsif  @weapon == (["Spear","Trident"] or ["Trident", "Spear"])
          @gladiators.delete(@gladiators[@weapon.index("Spear")])
       elsif @weapon == (["Spear","Club"] or ["Club", "Spear"])
         @gladiators.delete(@gladiators[@weapon.index("Club")])
