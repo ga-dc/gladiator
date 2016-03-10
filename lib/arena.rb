@@ -1,17 +1,15 @@
 class Arena
-  attr_accessor :name, :gladiators, :fight
+  attr_accessor :name, :gladiators
 
   def initialize name, gladiators = []
     @name = name.capitalize
     @gladiators = gladiators
-    @fight = fight
-
   end
 
   def add_gladiator gladiator
     if @gladiators.count < 2
       @gladiators << gladiator
-      # puts "Welcome #{gladiator.name} to the arena, ready to fight with a #{gladiator.weapon}"
+      puts "Welcome #{gladiator.name} to the arena, ready to fight with a #{gladiator.weapon}"
     else
     if @gladiators.count > 2
       remove_gladiators
@@ -35,7 +33,6 @@ class Arena
       elsif @gladiators[0].weapon ==  @gladiators[1].weapon
           @gladiators.clear
       end
-      # end
       end
     end
   end
