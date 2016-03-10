@@ -105,4 +105,12 @@ describe Arena do
       end
     end
   end
+
+  context "when clears gladiator"
+  it "removes gladiator you passed in from the gladiators array" do
+    arena.add_gladiator(maximus)
+    arena.add_gladiator(bilcephalon)
+    arena.clear_gladiators(maximus)
+    expect(arena.gladiators.first).to eq(bilcephalon)
+  end
 end

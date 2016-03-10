@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 
 class Arena
 
@@ -61,5 +61,5 @@ arena.add_gladiator(maximus)
 arena.add_gladiator(bilcephalon)
 
 
-binding.pry
+# binding.pry
 puts "arena.rb"
