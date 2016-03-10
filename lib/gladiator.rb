@@ -6,5 +6,4 @@ class Gladiator
     @name = name
     @weapon = weapon
   end
-
 end
