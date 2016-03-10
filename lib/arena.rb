@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 require_relative 'gladiator'
 
 class Arena
@@ -54,4 +54,4 @@ ren = Gladiator.new("Ren","Spear")
 arena.add_gladiator(max)
 arena.add_gladiator(ren)
 
-binding.pry
+# binding.pry

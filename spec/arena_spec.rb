@@ -119,5 +119,12 @@ describe Arena do
         expect(arena.gladiators.count).to eq(0)
       end
     end
+    describe "#entertained" do
+      it "returns true if Maximus is there" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+        expect(arena.entertained?).to eq(true)
+      end
+    end
   end
 end
