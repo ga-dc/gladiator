@@ -16,11 +16,11 @@ class Arena
     gladiators << gladiator if gladiators.length < ARENA_SIZE
   end
 
-  def fight
+  def fight(life=false) #life IS fair by default
     # First gladiator has strongest weapon in IFS. ELSE is when last gladiator has strongest weapon
     return if gladiators.length < ARENA_SIZE
 
-    if maximus_is_here?
+    if maximus?
       gladiators.select!{|gladiator| gladiator.name == "Maximus"}
     else
       champion = gladiators.first.weapon
@@ -28,14 +28,20 @@ class Arena
 
       if champion == challenger
         gladiators.clear
-      elsif champion == TRIDENT && challenger == SPEAR
-        gladiators.pop
-      elsif champion == SPEAR && challenger == CLUB
-        gladiators.pop
-      elsif champion == CLUB && challenger == TRIDENT
-        gladiators.pop
+      elsif (champion == TRIDENT && challenger == SPEAR) ||
+        (champion == SPEAR && challenger == CLUB) ||
+        (champion == CLUB && challenger == TRIDENT)
+        if life_isnt_fair(life)
+          gladiators.shift
+        else
+          gladiators.pop
+        end
       else
-        gladiators.shift
+         if life_isnt_fair(life)
+           gladiators.pop
+         else
+           gladiators.shift
+         end
       end
     end
   end
@@ -47,13 +53,26 @@ class Arena
   end
 
   def entertained?
-    maximus_is_here?
+    maximus?
   end
-
 
 # HELPER METHODS BELOW!
 
-  def maximus_is_here?
+  def maximus?
     gladiators.any?{|gladiator| gladiator.name == "Maximus"}
+  end
+
+  def life_isnt_fair(fair = false) # true for thumbs down, false for thunbs up
+    life = fair
+
+    # puts "The Emperor wants YOU to choose the fate of these brave warriors! Type 'U' to give him a thumbs up and reward the winning gladiator. Type 'D' to give him a thumbs down and declare victory for the challenger."
+    #
+    # input = gets.chomp.downcase
+    #
+    # if input == 'd'
+    #   life = true
+    # end
+    #
+    # life
   end
 end
