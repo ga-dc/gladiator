@@ -26,11 +26,11 @@ class Arena
       puts "Needs more gladiators!"
     else
       gladiators.each do |gladiator|
-        if @gladiators[0].weapon == "Spear" && @gladiators[1].weapon = "Trident"
+        if @gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Trident"
           @gladiators.shift
-        elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon = "Spear"
+        elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon == "Spear"
           @gladiators.shift
-        elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon = "Trident"
+        elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon == "Trident"
           @gladiators.pop()
         elsif @gladiators[0].weapon == @gladiators[1].weapon
           @gladiators.pop(2)
