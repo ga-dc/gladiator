@@ -26,17 +26,17 @@ class Arena
     if @gladiators[0].weapon == @gladiators[1].weapon
       @gladiators = []
     elsif @gladiators[0].weapon == 'Trident' && @gladiators[1].weapon == 'Spear'
-        @gladiators.delete(@gladiators[1])
+        @gladiators.pop
     elsif @gladiators[1].weapon == 'Trident' && @gladiators[0].weapon == 'Spear'
-        @gladiators.delete(@gladiators[0])
+        @gladiators.shift
     elsif @gladiators[0].weapon == 'Spear' && @gladiators[1].weapon == 'Club'
-        @gladiators.delete(@gladiators[1])
+        @gladiators.pop
     elsif @gladiators[1].weapon == 'Spear' && @gladiators[0].weapon == 'Club'
-        @gladiators.delete(@gladiators[0])
+        @gladiators.shift
     elsif @gladiators[0].weapon == 'Club' && @gladiators[1].weapon == 'Trident'
-      @gladiators.delete(@gladiators[1])
+      @gladiators.pop
     elsif @gladiators[1].weapon == 'Club' && @gladiators[0].weapon == 'Trident'
-      @gladiators.delete(@gladiators[0])
+      @gladiators.shift
     end
   end
 
