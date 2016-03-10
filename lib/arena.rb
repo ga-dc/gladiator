@@ -16,8 +16,13 @@ class Arena
   end
 
   def fight
-    if gladiators.first.weapon == SPEAR && gladiators.last.weapon == CLUB
+    # First gladiator has strongest weapon in IFS. ELSE is when last gladiator has strongest weapon
+    return if gladiators.length < ARENA_SIZE
 
+    if gladiators.first.weapon == TRIDENT && gladiators.last.weapon == SPEAR
+      gladiators.pop
+    else
+      gladiators.shift
     end
   end
 end
