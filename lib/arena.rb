@@ -2,7 +2,6 @@
 
 require_relative 'gladiator'
 
-
 class Arena
   attr_accessor :name, :gladiators
 
@@ -18,20 +17,31 @@ class Arena
   end
 
   def fight
-    if @gladiators == 2
+    if @gladiators.length == 2
       if @gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Trident"
-        
-
+        @gladiators.delete_at(0)
+      elsif @gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Club"
+        @gladiators.delete_at(1)
+      elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon == "Trident"
+        @gladiators.delete_at(1)
+      elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon == "Spear"
+        @gladiators.delete_at(0)
+      elsif @gladiators[0].weapon == "Trident" && @gladiators[1].weapon == "Club"
+        @gladiators.delete_at(0)
+      elsif @gladiators[0].weapon == "Trident" && @gladiators[1].weapon == "Spear"
+        @gladiators.delete_at(1)
+      elsif @gladiators[0].weapon == @gladiators[1].weapon
+        @gladiators = []
+      end
     end
   end
 end
 
+
   # arena = Arena.new("circus maximus")
   # max = Gladiator.new("maximus", "spear")
-  # arena.gladiators
-  # #
+  # tom = Gladiator.new("tom", "trident")
   # arena.add_gladiator(max)
-  # arena.gladiators
-
+  # arena.add_gladiator(tom)
   #
   # binding.pry
