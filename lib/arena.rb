@@ -23,22 +23,42 @@ class Arena
 
   def fight
     if @gladiators.length < 2
-    else                        #Why do I need an else statement here but not an else statement in the add_gladiator method
+    else                      #Why do I need an else statement here but not an else statement in the add_gladiator method
       #if spear weapon vs trident weapon
+      if @gladiators[0].weapon === "spear" && @gladiators[1].weapon === "trident"
         #remove spear gladiator from gladiators array
-        #arena.gladiators.length = 1
-      #else if club weapon vs. spear weapon
-        #kill club
-          #remove club gladiator from gladiators array
-        #arena.gladiators.length = 1
-      #else if trident weapon vs. club weapon
-        #kill trident
-          #remove trident gladiator from gladiators array
-        #arena.gladiators.length = 1
-      #else if weapon = weapon
-        #both gladiators are killed
-          #remove both gladiators from array
-        #arena.gladiators.length = 0
+          @gladiators.shift
+
+          #if spear weapon vs trident weapon
+      elsif @gladiators[1].weapon === "spear" && @gladiators[0].weapon === "trident"
+        #remove spear gladiator from gladiators array
+            @gladiators.shift
+
+      elsif @gladiators[0].weapon === "club" && @gladiators[1].weapon === "spear"
+          #else if club weapon vs. spear weapon
+            @gladiators.shift
+              #remove club gladiator from gladiators array
+
+      elsif @gladiators[1].weapon === "club" && @gladiators[0].weapon === "spear"
+          #else if club weapon vs. spear weapon
+          @gladiators.shift
+            #remove club gladiator from gladiators array
+
+      elsif @gladiators[0].weapon === "trident" && @gladiators[1].weapon === "club"
+        #else if trident weapon vs. club weapon
+          @gladiators.shift
+            #remove trident gladiator from gladiators array
+      elsif @gladiators[1].weapon === "trident" && @gladiators[0].weapon === "club"
+        #else if trident weapon vs. club weapon
+          @gladiators.shift
+            #remove trident gladiator from gladiators array
+      elsif @gladiators[0].weapon ===@gladiators[1].weapon
+        #else if weapons are the same
+          @gladiators.shift
+          @gladiators.shift
+            #remove both gladiators from @gladiators array
+      end
+
     end
   end
 
