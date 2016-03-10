@@ -1,4 +1,4 @@
-require_relative "arena.rb"
+
 
 class Gladiator
 attr_accessor :name, :weapon
