@@ -65,6 +65,15 @@ describe Arena do
       end
     end
 
+    # context "when one fighter is Maximus" do
+    #   it "deletes all non-Maximus fighters" do
+    #     arena.add_gladiator(maximus)
+    #     arena.add_gladiator(bilcephalon)
+    #     arena.fight
+    #     expect(arena.gladiators.count).to eq(1)
+    #   end
+    # end
+
     context "when Spear v Trident" do
       it "kills: spear when fighting trident" do
         arena.add_gladiator(maximus)

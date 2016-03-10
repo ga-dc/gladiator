@@ -16,6 +16,9 @@ class Arena
   end
 
   def fight
+    # @gladiators.select! do |x|
+    #     x.name == "Maximus"
+    #   end
     if @gladiators.length == 2
       if @gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Trident"
         @gladiators.delete_at(0)
