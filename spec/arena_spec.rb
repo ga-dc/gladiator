@@ -1,27 +1,27 @@
-# require 'spec_helper'
-# require_relative '../lib/gladiator'
-# require_relative '../lib/arena'
-#
-# require 'spec_helper'
-# require './lib/arena'
-# require './lib/gladiator'
-#
-# describe Arena do
-#   let(:arena){Arena.new("megalopolis")}
-#   let(:maximus){Gladiator.new("Maximus","Spear")}
-#   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
-#   let(:ephates){Gladiator.new("Ephates","Club")}
-#   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
-#
-#   describe "#name" do
-#     it "has a name" do
-#       expect(arena.name).to_not be_nil
-#     end
-#
-#     it "is always capitalized" do
-#       expect(arena.name).to eq("Megalopolis")
-#     end
-#   end
+require 'spec_helper'
+require_relative '../lib/gladiator'
+require_relative '../lib/arena'
+
+require 'spec_helper'
+require './lib/arena'
+require './lib/gladiator'
+
+describe Arena do
+  let(:arena){Arena.new("megalopolis")}
+  let(:maximus){Gladiator.new("Maximus","Spear")}
+  let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
+  let(:ephates){Gladiator.new("Ephates","Club")}
+  let(:cylodeus){Gladiator.new("Cylodeus","Club")}
+
+  describe "#name" do
+    it "has a name" do
+      expect(arena.name).to_not be_nil
+    end
+
+    it "is always capitalized" do
+      expect(arena.name).to eq("Megalopolis")
+    end
+  end
 #
 #   describe "#gladiators" do
 #     it "starts empty" do
@@ -104,4 +104,4 @@
 #       end
 #     end
 #   end
-# end
+ end
