@@ -28,7 +28,7 @@ describe Arena do
       expect(arena.gladiators).to eq([])
     end
   end
-
+  #
   describe "#add_gladiator" do
 
     it "adds a gladiator to the arena" do
@@ -46,6 +46,16 @@ describe Arena do
       arena.add_gladiator(ephates)
       expect(arena.gladiators).to_not include(ephates)
       expect(arena.gladiators.count).to eq(2)
+    end
+  end
+
+  describe "#remove_gladiator" do
+    it "removes a gladiator by name from the arena" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      arena.remove_gladiator(bilcephalon)
+      expect(arena.gladiators.count).to eq(1)
+      expect(arena.gladiators[0]).to eq(maximus)
     end
   end
 
