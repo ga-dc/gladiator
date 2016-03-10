@@ -22,7 +22,7 @@ class Arena
   end
 
   def remove_gladiator gladiator
-      @gladiators.delete_if {|gladiator| gladiator == @gladiators.name}
+      @gladiators.delete_if {|i| i.name == gladiator}
       @gladiators
   end
 
