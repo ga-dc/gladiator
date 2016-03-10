@@ -1,5 +1,5 @@
-# require_relative "gladiator"
-# require "pry"
+require_relative "gladiator"
+require "pry"
 
 class Arena
   attr_accessor :name, :gladiators
@@ -21,12 +21,20 @@ class Arena
     end
   end
 
+  def remove_gladiator gladiator
+      @gladiators.delete_if {|gladiator| gladiator == @gladiators.name}
+      @gladiators
+  end
+
   def fight
     if @gladiators.length <= 1
       puts "Needs more gladiators!"
     else
       gladiators.each do |gladiator|
-        if @gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Trident"
+        if gladiator.name == "Maximus"
+          puts "Maximus is always the winner."
+          @gladiators.delete_if {|gladiator| gladiator.name != "Maximus"}
+        elsif @gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Trident"
           @gladiators.shift
           puts @gladiators[0].name + " is the winner!"
         elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon == "Spear"
@@ -45,9 +53,12 @@ class Arena
 
 end
 
-# adrian = Gladiator.new("adrian", "club")
-# robin = Gladiator.new("robin", "spear")
-#
-# dupont = Arena.new("dupont")
+adrian = Gladiator.new("adrian", "club")
+robin = Gladiator.new("robin", "spear")
+maximus = Gladiator.new("maximus", "spear")
 
-# binding.pry
+dupont = Arena.new("dupont")
+dupont.add_gladiator maximus
+dupont.add_gladiator robin
+
+binding.pry
