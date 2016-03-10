@@ -20,6 +20,14 @@ class Arena
                                 not gladiators.include?(gladiator)
     end
 
+    def remove_gladiator name
+        gladiators.each do |gladiator|
+            if gladiator.name == name
+                gladiators.delete(gladiator)
+            end
+        end
+    end
+
     def fight
         if gladiators.size == 2
             if gladiators[0].weapon == gladiators[1].weapon
