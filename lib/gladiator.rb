@@ -1,6 +1,8 @@
 #require "pry"
 
-class Gladiator
+class Gladiator# < ActiveRecord::Base
+
+  #belongs_to :arena
 
   attr_accessor :name, :weapon
 
@@ -11,7 +13,7 @@ class Gladiator
 
 end
 
-maximus = Gladiator.new("Maximus", "Sword")
+maximus = Gladiator.new("Maximus", "Trident")
 
 # binding.pry
 # puts "Done."

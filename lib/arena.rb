@@ -1,26 +1,28 @@
 #require "pry"
 
-class Arena
+class Arena# < ActiveRecord::Base
+
+  #has_many :gladiator
 
   attr_accessor :name, :gladiators
 
   def initialize(name)
-    @name = name
+    @name = name.capitalize
     @gladiators = []
   end
+
+    # def capitalize(name)
+    #   name = "#{@name.capitalize}"
+    # end
 
   def add_gladiator(gladiator)
     @gladiators << gladiator
   end
 
-  # def capitalize
-  #   puts "#{@name.capitalize}"
-  # end
-
 end
 
-megalopolis = Arena.new("megalopolis")
-maximus = Gladiator.new("Maximus", "Sword")
+megalopolis = Arena.new("Megalopolis")
+maximus = Gladiator.new("Maximus", "Trident")
 
 # binding.pry
 # puts "Done."
