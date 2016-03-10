@@ -30,8 +30,10 @@ class Arena
     @gladiators.each do |gladiator|
       if gladiator.name.index("Maximus") != nil
         puts "The crowd is entertained."
+        return true
       elsif @gladiators[0].name != "Maximus" && @gladiators[1].name != "Maximus"
         puts "The crowd is NOT entertained."
+        return false
         break
       end
     end

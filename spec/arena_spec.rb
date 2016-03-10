@@ -60,6 +60,21 @@ describe Arena do
     end
   end
 
+  describe "#entertained?" do
+    it "Maximus in arena: crowd is entertained" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      arena.entertained?
+      expect(arena.entertained?).to eq(true)
+    end
+    it "Maximus not in area: crowd is not entertained" do
+      arena.add_gladiator(movius)
+      arena.add_gladiator(bilcephalon)
+      arena.entertained?
+      expect(arena.entertained?).to eq(false)
+    end
+  end
+
 
   describe "#fight" do
     context "when there are no gladiators" do
