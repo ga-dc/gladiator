@@ -10,6 +10,7 @@ class Arena
     def add_gladiator(glad)
         if @count < 2
             @new_glad = glad
+            @gladiators << @new_glad
             @count += 1
         end
     end
