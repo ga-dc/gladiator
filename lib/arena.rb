@@ -76,6 +76,17 @@ class Arena
    @gladiators[1] = temp
  end
 
+# Asks the user if the current loser should be spared.
+# moves the doomed gladiator to the top of the array.
+def mercy?
+  answer = nil;
+  puts "#{gladiators.first.name} Wins! Show #{gladiators.last.name}"
+  puts "thumbs up or down"
+  answer = gets.chomp
+  if (answer = "up")
+    swap_gladiators
+  end
+end
  # Removes a gladiator specified by name from the arena.  Returns the removed gladiator
  # or false if no specified gladiator in in the arena.
  def remove_gladiator(name)
@@ -86,12 +97,14 @@ class Arena
      if gladiators[1].name != name
        return false
      else
+       mercy?
        return gladiators.pop
      end
    else
      if is_able?
        swap_gladiators
      end
+     mercy?
      return gladiators.pop
    end
  end
