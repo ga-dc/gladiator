@@ -22,12 +22,12 @@ describe Arena do
       expect(arena.name).to eq("Megalopolis")
     end
   end
-#
-#   describe "#gladiators" do
-#     it "starts empty" do
-#       expect(arena.gladiators).to eq([])
-#     end
-#   end
+
+  describe "#gladiators" do
+    it "starts empty" do
+      expect(arena.gladiators).to eq([])
+    end
+  end
 #
 #   describe "#add_gladiator" do
 #
