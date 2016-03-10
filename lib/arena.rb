@@ -5,7 +5,7 @@ class Arena
 
   #initialize Arena
   def initialize(name)
-    @name = name
+    @name = name.capitalize
   end
 
 end
