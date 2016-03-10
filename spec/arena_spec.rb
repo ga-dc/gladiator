@@ -13,22 +13,26 @@ describe Arena do
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
 
+#works
   describe "#name" do
     it "has a name" do
       expect(arena.name).to_not be_nil
     end
 
+#capitalized Megalopolis
     it "is always capitalized" do
       expect(arena.name).to eq("Megalopolis")
     end
   end
 
+#establish instance variable for gladiators and create empty array
   describe "#gladiators" do
     it "starts empty" do
       expect(arena.gladiators).to eq([])
     end
   end
 
+#
   describe "#add_gladiator" do
 
     it "adds a gladiator to the arena" do
