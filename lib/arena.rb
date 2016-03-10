@@ -28,6 +28,13 @@ class Arena
         end
     end
 
+    def entertained?
+        gladiators.each do |gladiator|
+            return true if gladiator.name == "Maximus"
+        end
+        false
+    end
+
     def fight
         if gladiators.size == 2
             # Maximus should always win
@@ -35,6 +42,7 @@ class Arena
                                              gladiator.name == "Maximus"})
             return gladiators.delete_at(1-maximus_i) if maximus_i
 
+            # No one shall live with the same weapon
             if gladiators[0].weapon == gladiators[1].weapon
                 return self.gladiators = []
             end

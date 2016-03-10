@@ -135,4 +135,14 @@ describe Arena do
       end
     end
   end
+
+  describe "#entertain" do
+    include Helpers
+    context "should entertain when" do
+      it "has Maximus in the arena" do
+        can_add_gladiator(maximus)
+        expect(arena.entertained?).to eq(true)
+      end
+    end
+  end
 end
