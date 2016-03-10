@@ -1,4 +1,5 @@
 
+require_relative 'gladiator'
 class Arena
   attr_accessor :name :gladiators :fight
 
