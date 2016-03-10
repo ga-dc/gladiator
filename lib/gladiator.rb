@@ -23,5 +23,7 @@ class Gladiator
 
 end
 
+
+
 # binding.pry
 # puts "done"

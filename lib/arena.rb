@@ -1,5 +1,5 @@
-# require "pry"
-# require_relative "../lib/gladiator"
+require "pry"
+require_relative "../lib/gladiator"
 
 class Arena
   attr_accessor :name, :gladiators, :battle, :gladiator_names
@@ -27,13 +27,13 @@ class Arena
 
   def get_winner(battle)
     if gladiator_names.include?("Maximus")
-      gladiators.delete_if {|gladiator| gladiator.name != "Maximus"}
+      gladiators.delete_if {|gladiator| gladiator.name != "Maximus"} if thumbs_up == "d"
     elsif battle.sort! == ["Spear", "Trident"]
-      gladiators.delete_if {|gladiator| gladiator.weapon == "Spear"}
+      gladiators.delete_if {|gladiator| gladiator.weapon == "Spear"} if thumbs_up == "d"
     elsif battle.sort! == ["Club", "Spear"]
-      gladiators.delete_if {|gladiator| gladiator.weapon == "Club"}
+      gladiators.delete_if {|gladiator| gladiator.weapon == "Club"} if thumbs_up == "d"
     elsif battle.sort! == ["Club", "Trident"]
-      gladiators.delete_if {|gladiator| gladiator.weapon == "Trident"}
+      gladiators.delete_if {|gladiator| gladiator.weapon == "Trident"} if thumbs_up == "d"
     elsif battle[0] == battle[1]
       gladiators.clear
     end
@@ -52,7 +52,17 @@ class Arena
       end
     end
   end
+
+  def thumbs_up
+    puts "Does the loser live or die? Type 'l' or 'd'"
+    choice = gets.chomp
+    return choice
+  end
 end
 
-# binding.pry
-# puts "done"
+patrick = Gladiator.new("Patrick", "trident")
+moran = Gladiator.new("Moran", "spear")
+ga = Arena.new("ga", [patrick, moran])
+
+binding.pry
+puts "done"
