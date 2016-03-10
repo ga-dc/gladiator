@@ -8,7 +8,7 @@ require './lib/gladiator'
 
 describe Arena do
   let(:arena){Arena.new("megalopolis")}
-  let(:maximus){Gladiator.new("Maximus","Spear")}
+  let(:movius){Gladiator.new("Movius","Spear")}
   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
@@ -32,16 +32,16 @@ describe Arena do
   describe "#add_gladiator" do
 
     it "adds a gladiator to the arena" do
-      arena.add_gladiator(maximus)
+      arena.add_gladiator(movius)
       expect(arena.gladiators.count).to eq(1)
     end
     it "can add multiple gladiators" do
-      arena.add_gladiator(maximus)
+      arena.add_gladiator(movius)
       arena.add_gladiator(bilcephalon)
       expect(arena.gladiators.count).to eq(2)
     end
     it "does not have more than two gladiators at once" do
-      arena.add_gladiator(maximus)
+      arena.add_gladiator(movius)
       arena.add_gladiator(bilcephalon)
       arena.add_gladiator(ephates)
       expect(arena.gladiators).to_not include(ephates)
@@ -59,7 +59,7 @@ describe Arena do
 
     context "when there is one gladiator" do
       it "does nothing" do
-        arena.add_gladiator(maximus)
+        arena.add_gladiator(movius)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
       end
@@ -67,7 +67,7 @@ describe Arena do
 
     context "when Spear v Trident" do
       it "kills: spear when fighting trident" do
-        arena.add_gladiator(maximus)
+        arena.add_gladiator(movius)
         arena.add_gladiator(bilcephalon)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
@@ -77,11 +77,11 @@ describe Arena do
 
     context "when Club v Spear" do
       it "kills: club when fighting spear" do
-        arena.add_gladiator(maximus)
+        arena.add_gladiator(movius)
         arena.add_gladiator(ephates)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(maximus)
+        expect(arena.gladiators.first).to eq(movius)
       end
     end
 

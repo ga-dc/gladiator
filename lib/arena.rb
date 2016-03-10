@@ -1,5 +1,5 @@
-require_relative "gladiator"
-require "pry"
+# require_relative "gladiator"
+# require "pry"
 
 class Arena
   attr_accessor :name, :gladiators
@@ -26,11 +26,19 @@ class Arena
       @gladiators
   end
 
+  def entertained?
+    if @gladiators.include?("Maximus") == true
+      puts "The crowd is entertained."
+    # else
+    #   puts "The crowd is NOT entertained."
+    end
+  end
+
   def fight
     if @gladiators.length <= 1
       puts "Needs more gladiators!"
     else
-      gladiators.each do |gladiator|
+      @gladiators.each do |gladiator|
         if gladiator.name == "Maximus"
           puts "Maximus is always the winner."
           @gladiators.delete_if {|gladiator| gladiator.name != "Maximus"}
@@ -61,4 +69,4 @@ dupont = Arena.new("dupont")
 dupont.add_gladiator maximus
 dupont.add_gladiator robin
 
-binding.pry
+# binding.pry
