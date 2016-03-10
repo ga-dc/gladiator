@@ -7,15 +7,13 @@ class Arena
     end
 
     def add_gladiator (gladiator)
-      @gladiators << gladiator
-    # when gladiator.length < 2
-    #   puts "hi"
+      if @gladiators.length < 2
+        @gladiators << gladiator
+    else
+      if @gladiators.length > 2
+        remove_gladiators
+        puts "FIGHT TO THE DEATH"
+      end
     end
-
-  # def fight(gladiator,weapon)
-  #   fight = fight
-  #     gladiator.name =
-  #
-  # # when
-  # end
+  end
 end
