@@ -35,11 +35,13 @@ describe Arena do
       arena.add_gladiator(maximus)
       expect(arena.gladiators.count).to eq(1)
     end
+
     it "can add multiple gladiators" do
       arena.add_gladiator(maximus)
       arena.add_gladiator(bilcephalon)
       expect(arena.gladiators.count).to eq(2)
     end
+
     it "does not have more than two gladiators at once" do
       arena.add_gladiator(maximus)
       arena.add_gladiator(bilcephalon)
