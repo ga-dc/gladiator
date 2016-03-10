@@ -3,4 +3,7 @@ class Arena
   def initialize(name)
     @name = name.capitalize
   end
+  def gladiators
+    []
+  end
 end
