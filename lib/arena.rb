@@ -28,10 +28,15 @@ class Arena
     def fight
         #fight only works if there are two gladiators
         if @gladiators.count == 2
+            if @gladiators[0].name == 'Maximus' || @gladiators[1].name == 'Maximus'
+                #reject any gladiator that meets condition and subtract new array from original array.
+                @gladiators -= @gladiators.reject{|g| g.name == "Maximus"}
+                return
+            end
+
             if @gladiators[0].weapon == @gladiators[1].weapon
                 @gladiators = []
             elsif @gladiators[0].weapon == "Trident" && @gladiators[1].weapon == "Spear"
-                # @gladiators.delete(@gladiators[1])
                 remove_glad(@gladiators[1].name)
             elsif @gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Club"
                 remove_glad(@gladiators[1].name)
