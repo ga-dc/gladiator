@@ -6,6 +6,4 @@ class Gladiator
     @weapon = initial_weapon
   end
 
-  def
-
 end
