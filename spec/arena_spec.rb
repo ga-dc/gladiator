@@ -76,7 +76,7 @@ describe Arena do
     end
 
     context "when Club v Spear" do
-      xit "kills: club when fighting spear" do
+      it "kills: club when fighting spear" do
         arena.add_gladiator(maximus)
         arena.add_gladiator(ephates)
         arena.fight
@@ -86,7 +86,7 @@ describe Arena do
     end
 
     context "when Trident v Club" do
-      xit "kills: trident when fighting club" do
+      it "kills: trident when fighting club" do
         arena.add_gladiator(bilcephalon)
         arena.add_gladiator(ephates)
         arena.fight
@@ -96,7 +96,7 @@ describe Arena do
     end
 
     context "when same Weapons" do
-      xit "kills: both if their weapons are the same" do
+      it "kills: both if their weapons are the same" do
         arena.add_gladiator(ephates)
         arena.add_gladiator(cylodeus)
         arena.fight

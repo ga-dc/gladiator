@@ -6,6 +6,7 @@ class Arena
   TRIDENT = "Trident"
   SPEAR = "Spear"
   CLUB = "Club"
+  
   def initialize(name)
     @name = name.capitalize
     @gladiators = []
@@ -19,7 +20,19 @@ class Arena
     # First gladiator has strongest weapon in IFS. ELSE is when last gladiator has strongest weapon
     return if gladiators.length < ARENA_SIZE
 
-    if gladiators.first.weapon == TRIDENT && gladiators.last.weapon == SPEAR
+    champion = gladiators.first.weapon
+    challenger = gladiators.last.weapon
+
+    puts champion
+    puts challenger
+
+    if champion == challenger
+      gladiators.clear
+    elsif champion == TRIDENT && challenger == SPEAR
+      gladiators.pop
+    elsif champion == SPEAR && challenger == CLUB
+      gladiators.pop
+    elsif champion == CLUB && challenger == TRIDENT
       gladiators.pop
     else
       gladiators.shift
