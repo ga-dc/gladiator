@@ -1,4 +1,5 @@
 class Gladiator
+  
   def initialize(name, weapon)
     @name = name
     @weapon = weapon
@@ -10,6 +11,6 @@ class Gladiator
 
   def weapon
     return @weapon
-  end   
+  end
 end
 # initialize("Maximus", "Sword")
