@@ -7,3 +7,11 @@ class Gladiator
   end
 
 end
+
+# maximus = Gladiator.new("Maximus","Spear")
+# bilcephalon = Gladiator.new("Bilcephalon","Trident")
+# ephates = Gladiator.new("Ephates","Club")
+# cylodeus = Gladiator.new("Cylodeus","Club")
+#
+# arena.add_gladiator(maximus)
+# arena.add_gladiator(bilcephalon)
