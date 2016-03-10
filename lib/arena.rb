@@ -15,17 +15,54 @@ class Arena
 
   def fight
     if gladiators.length >= 2
-      if gladiators[0].weapon == "Spear" && gladiators[1].weapon == "Club"
+      elsif gladiators[0].name == "Maximus"
         @gladiators.pop
+      elsif gladiators[1].name == "maximus"
+        @gladiators.shift
+      elsif gladiators[0].weapon == "Spear" && gladiators[1].weapon == "Club"
+        puts "thumbs up or thumbs down?"
+        up_or_down = gets.chomp
+        if up_or_down == "thumbs down"
+          @gladiators.pop
+        elsif up_or_down == "thumbs up"
+          @gladiators.shift
+        end
       elsif gladiators[0].weapon == "Club" && gladiators[1].weapon == "Trident"
-        @gladiators.pop
+        puts "thumbs up or thumbs down?"
+        up_or_down = gets.chomp
+        if up_or_down == "thumbs down"
+          @gladiators.pop
+        elsif up_or_down == "thumbs up"
+          @gladiators.shift
+        end
       elsif gladiators[0].weapon == "Trident" && gladiators[1].weapon == "Spear"
-        @gladiators.pop
+        puts "thumbs up or thumbs down?"
+        up_or_down = gets.chomp
+        if up_or_down == "thumbs down"
+          @gladiators.pop
+        elsif up_or_down == "thumbs up"
+          @gladiators.shift
+        end
       elsif gladiators[0].weapon == gladiators[1].weapon
         @gladiators = []
       else
-        @gladiators.shift
-      end
+        puts "thumbs up or thumbs down?"
+        up_or_down = gets.chomp
+        if up_or_down == "thumbs down"
+          @gladiators.shift
+        elsif up_or_down == "thumbs up"
+          @gladiators.pop
+        end
+    end
+  end
+
+  def remove_gladiator (name)
+    @gladiator.delete(name)
+  end
+
+  def entertained?
+    if @gladiators.include?("Maximus")
+      puts "The crowd is entertained!"
     end
   end
 
