@@ -14,33 +14,33 @@ describe Arena do
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
 
   describe "#name" do
-    xit "has a name" do
+    it "has a name" do
       expect(arena.name).to_not be_nil
     end
 
-    xit "is always capitalized" do
+    it "is always capitalized" do
       expect(arena.name).to eq("Megalopolis")
     end
   end
 
   describe "#gladiators" do
-    xit "starts empty" do
+    it "starts empty" do
       expect(arena.gladiators).to eq([])
     end
   end
 
   describe "#add_gladiator" do
 
-    xit "adds a gladiator to the arena" do
+    it "adds a gladiator to the arena" do
       arena.add_gladiator(maximus)
       expect(arena.gladiators.count).to eq(1)
     end
-    xit "can add multiple gladiators" do
+    it "can add multiple gladiators" do
       arena.add_gladiator(maximus)
       arena.add_gladiator(bilcephalon)
       expect(arena.gladiators.count).to eq(2)
     end
-    xit "does not have more than two gladiators at once" do
+    it "does not have more than two gladiators at once" do
       arena.add_gladiator(maximus)
       arena.add_gladiator(bilcephalon)
       arena.add_gladiator(ephates)
@@ -51,7 +51,7 @@ describe Arena do
 
   describe "#fight" do
     context "when there are no gladiators" do
-      xit "does nothing" do
+      it "does nothing" do
         arena.fight
         expect(arena.gladiators.count).to eq(0)
       end
@@ -76,7 +76,7 @@ describe Arena do
     end
 
     context "when Club v Spear" do
-      it "kills: club when fighting spear" do
+      xit "kills: club when fighting spear" do
         arena.add_gladiator(maximus)
         arena.add_gladiator(ephates)
         arena.fight
@@ -86,7 +86,7 @@ describe Arena do
     end
 
     context "when Trident v Club" do
-      it "kills: trident when fighting club" do
+      xit "kills: trident when fighting club" do
         arena.add_gladiator(bilcephalon)
         arena.add_gladiator(ephates)
         arena.fight
@@ -96,7 +96,7 @@ describe Arena do
     end
 
     context "when same Weapons" do
-      it "kills: both if their weapons are the same" do
+      xit "kills: both if their weapons are the same" do
         arena.add_gladiator(ephates)
         arena.add_gladiator(cylodeus)
         arena.fight
