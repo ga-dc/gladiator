@@ -23,7 +23,5 @@ class Gladiator
 
 end
 
-gladiator = Gladiator.new("Patrick", "pear")
-
 # binding.pry
 # puts "done"

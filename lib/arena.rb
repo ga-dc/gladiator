@@ -1,3 +1,6 @@
+# require "pry"
+# require_relative "../lib/gladiator"
+
 class Arena
   attr_accessor :name, :gladiators, :battle, :gladiator_names
 
@@ -50,3 +53,6 @@ class Arena
     end
   end
 end
+
+# binding.pry
+# puts "done"
