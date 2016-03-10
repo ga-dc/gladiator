@@ -54,11 +54,16 @@ class Arena
             #remove trident gladiator from gladiators array
       elsif @gladiators[0].weapon === @gladiators[1].weapon
         #else if weapons are the same
-          @gladiators.shift
-          @gladiators.shift
+          @gladiators = []
+
             #remove both gladiators from @gladiators array
       end
 
+    end
+  end
+
+  def remove_gladiators
+    if gladiator.name === "Maximus"
     end
   end
 
