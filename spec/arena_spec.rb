@@ -7,34 +7,33 @@ require './lib/arena'
 require './lib/gladiator'
 
 describe Arena do
-  before (:all) do
-    @arena = Arena.new("megalopolis")
-    @maximus = Gladiator.new("Maximus","Spear")
-    @bilcephalon = Gladiator.new("Bilcephalon","Trident")
-    @ephates = Gladiator.new("Ephates","Club")
-    @cylodeus = Gladiator.new("Cylodeus","Club")
-  end
+  let(:arena){Arena.new("megalopolis")}
+  let(:maximus){Gladiator.new("Maximus","Spear")}
+  let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
+  let(:ephates){Gladiator.new("Ephates","Club")}
+  let(:cylodeus){Gladiator.new("Cylodeus","Club")}
+
   describe "#name" do
     it "has a name" do
-      expect(@arena.name).to_not be_nil
+      expect(arena.name).to_not be_nil
     end
 
     it "is always capitalized" do
-      expect(@arena.name).to eq("Megalopolis")
+      expect(arena.name).to eq("Megalopolis")
     end
   end
 
   describe "#gladiators" do
     it "starts empty" do
-      expect(@arena.gladiators).to eq([])
+      expect(arena.gladiators).to eq([])
     end
   end
 
   describe "#add_gladiator" do
 
     it "adds a gladiator to the arena" do
-      @arena.add_gladiator(maximus)
-      expect(@arena.gladiators.count).to eq(1)
+      arena.add_gladiator(maximus)
+      expect(arena.gladiators.count).to eq(1)
     end
     it "can add multiple gladiators" do
       arena.add_gladiator(maximus)
