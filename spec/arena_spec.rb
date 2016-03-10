@@ -13,7 +13,7 @@ module Helpers
     end
 
     def can_add_multiple_gladiators(gladiator1, gladiator2)
-      arena.add_gladiator(gladiator1)
+      can_add_gladiator(gladiator1)
       arena.add_gladiator(gladiator2)
       expect(arena.gladiators.count).to eq(2)
     end
