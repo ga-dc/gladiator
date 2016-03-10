@@ -21,28 +21,22 @@ class Arena
     elsif @gladiators.count == 1
       puts "There is only #{@gladiators.count} gladiator in the arena. He can't fight himself!"
     else
-      first_gladiator = @gladiators[0]
-      second_gladiator = @gladiators[1]
-      puts "#{first_gladiator.name} fights #{second_gladiator.name}. Morituri te salutamus!"
-      if (first_gladiator.weapon == "Gladius") && (second_gladiator.weapon == "Sica")
-        @gladiators.pop
-      elsif (first_gladiator.weapon == "Sica") && (second_gladiator.weapon == "Fuscina")
-        @gladiators.pop
-      elsif (first_gladiator.weapon == "Fuscina") && (second_gladiator.weapon == "Gladius")
-        @gladiators.pop
-      elsif (second_gladiator.weapon == "Gladius") && (first_gladiator.weapon == "Sica")
-        @gladiators.shift
-      elsif (second_gladiator.weapon == "Sica") && (first_gladiator.weapon == "Fuscina")
-        @gladiators.shift
-      elsif (second_gladiator.weapon == "Fuscina") && (first_gladiator.weapon == "Gladius")
-        @gladiators.shift
-      elsif first_gladiator.weapon == second_gladiator.weapon
+      puts "#{@gladiators.first.name} fights #{@gladiators.last.name}. Morituri te salutamus!"
+      if @gladiators.first.weapon == @gladiators.last.weapon
         until @gladiators.count == 0
           @gladiators.pop
         end
+      elsif (@gladiators.first.weapon == "Gladius") && (@gladiators.last.weapon == "Sica")
+        @gladiators.pop
+      elsif (@gladiators.first.weapon == "Sica") && (@gladiators.last.weapon == "Fuscina")
+        @gladiators.pop
+      elsif (@gladiators.first.weapon == "Fuscina") && (@gladiators.last.weapon == "Gladius")
+        @gladiators.pop
+      else
+        @gladiators.shift
       end
       @gladiators
     end
   end
-
+  
 end
