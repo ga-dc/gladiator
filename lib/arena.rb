@@ -20,7 +20,10 @@ class Arena
     end
   end
   def getWinner
-    if fight_weapons.sort! == ["Spear","Trident"]
+    if gladiators[0].name == 'Maximus' || gladiators[1].name == 'Maximus'
+      gladiators.delete_if {|gladiator| gladiator.name != 'Maximus'}
+      puts "Maximus always wins, yo."
+    elsif fight_weapons.sort! == ["Spear","Trident"]
       gladiators.delete_if {|gladiator| gladiator.weapon == "Spear"}
       "#{gladiators[0].name} wins"
     elsif fight_weapons.sort! == ["Club","Spear"]
@@ -40,7 +43,7 @@ end
 
 #testing purposes:
 arena = Arena.new("Metropolis")
-max = Gladiator.new("Max","Trident")
+max = Gladiator.new("Maximus","Club")
 ren = Gladiator.new("Ren","Spear")
 arena.add_gladiator(max)
 arena.add_gladiator(ren)

@@ -57,6 +57,14 @@ describe Arena do
     end
   end
 
+  describe "max wins" do
+    it "runs max as winner" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      arena.fight
+      expect(arena.gladiators[0].name) == "Maximus"
+    end
+  end
   describe "#fight" do
     context "when there are no gladiators" do
       it "does nothing" do
