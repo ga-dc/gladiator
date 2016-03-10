@@ -48,15 +48,19 @@ describe Arena do
       expect(arena.gladiators.count).to eq(2)
     end
   end
+
+
   # Add a method to remove gladiators from the arena by name
   describe "#remove_glad" do
      it "removes a gladiator by name" do
          arena.add_gladiator(maximus)
          arena.add_gladiator(bilcephalon)
-         arena.remove_glad(maximus)
+         arena.remove_glad("Maximus")
          expect(arena.gladiators.count).to eq(1)
      end
   end
+
+
 
   describe "#fight" do
     context "when there are no gladiators" do

@@ -15,6 +15,13 @@ class Arena
         end
     end
 
+    def remove_glad(nameofglad)
+        #for each person in gladiator reject that gladiator if its name was passed into the method.
+        @gladiators.reject! do |person|
+            person.name == nameofglad
+        end
+    end
+
     # Trident beats Spear
     # Spear beats Club
     # Club beats Trident
@@ -24,23 +31,25 @@ class Arena
             if @gladiators[0].weapon == @gladiators[1].weapon
                 @gladiators = []
             elsif @gladiators[0].weapon == "Trident" && @gladiators[1].weapon == "Spear"
-                @gladiators.delete(@gladiators[1])
+                # @gladiators.delete(@gladiators[1])
+                remove_glad(@gladiators[1].name)
             elsif @gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Club"
-                @gladiators.delete(@gladiators[1])
+                remove_glad(@gladiators[1].name)
             elsif @gladiators[0].weapon == "Club" && @gladiators[1].weapon == "Trident"
-                @gladiators.delete(@gladiators[1])
+                remove_glad(@gladiators[1].name)
             elsif @gladiators[1].weapon == "Trident" && @gladiators[0].weapon == "Spear"
-                @gladiators.delete(@gladiators[0])
+                remove_glad(@gladiators[0].name)
             elsif @gladiators[1].weapon == "Spear" && @gladiators[0].weapon == "Club"
-                @gladiators.delete(@gladiators[0])
+                remove_glad(@gladiators[0].name)
             elsif @gladiators[1].weapon == "Club" && @gladiators[0].weapon == "Trident"
-                @gladiators.delete(@gladiators[0])
+                remove_glad(@gladiators[0].name)
             end
         end
     end
 
 end
-#
+
+#Test is pry:
 # gladiatrix = Gladiator.new("Anissa", "Club")
 # otherglad = Gladiator.new("Cam", "Trident")
 # arena = Arena.new("Metro")
