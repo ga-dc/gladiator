@@ -20,7 +20,7 @@ class Arena
       else
         if @gladiators[0].weapon == @gladiators[1].weapon
           @gladiators.clear
-        #elsif @gladiators[0].weapon == "spear" && @gladiators[1].weapon = "trident"
+        elsif @gladiators[0].weapon == "spear" && @gladiators[1].weapon = "trident"
 
         end
       end
