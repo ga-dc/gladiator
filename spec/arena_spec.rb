@@ -9,6 +9,7 @@ require './lib/gladiator'
 describe Arena do
   let(:arena){Arena.new("megalopolis")}
   let(:maximus){Gladiator.new("Maximus","Gladius")}
+  let(:titus){Gladiator.new("Titus","Gladius")}
   let(:bilcephalon){Gladiator.new("Bilcephalon","Fuscina")}
   let(:ephates){Gladiator.new("Ephates","Sica")}
   let(:cylodeus){Gladiator.new("Cylodeus","Sica")}
@@ -57,6 +58,7 @@ describe Arena do
       end
     end
 
+
     context "when there is one gladiator" do
       it "does nothing" do
         arena.add_gladiator(maximus)
@@ -65,9 +67,29 @@ describe Arena do
       end
     end
 
+    context "when Maximus fights someone with the same weapon" do
+      it "kills: opponent when fighting Maximus" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(titus)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators.first).to eq(maximus)
+      end
+    end
+
+    context "when Maximus fights someone who should defeat him" do
+      it "kills: opponent when fighting Maximus" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators.first).to eq(maximus)
+      end
+    end
+
     context "when gladius v fuscina" do
       it "kills: gladius when fighting fuscina" do
-        arena.add_gladiator(maximus)
+        arena.add_gladiator(titus)
         arena.add_gladiator(bilcephalon)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
@@ -77,11 +99,11 @@ describe Arena do
 
     context "when sica v gladius" do
       it "kills: sica when fighting gladius" do
-        arena.add_gladiator(maximus)
+        arena.add_gladiator(titus)
         arena.add_gladiator(ephates)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(maximus)
+        expect(arena.gladiators.first).to eq(titus)
       end
     end
 

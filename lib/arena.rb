@@ -28,7 +28,10 @@ class Arena
       puts "There is only #{@gladiators.count} gladiator in the arena. He can't fight himself!"
     else
       puts "#{@gladiators.first.name} fights #{@gladiators.last.name}. Morituri te salutamus!"
-      if @gladiators.first.weapon == @gladiators.last.weapon
+      if @gladiators.detect { |gladiator| gladiator.name == "Maximus" }
+        puts "Maximus wins again! He always does . . ."
+        @gladiators.delete_if { |gladiator| gladiator.name != "Maximus" }
+      elsif @gladiators.first.weapon == @gladiators.last.weapon
         until @gladiators.count == 0
           @gladiators.pop
         end
