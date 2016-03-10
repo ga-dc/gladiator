@@ -4,10 +4,11 @@ class Gladiator
   attr_accessor :name, :weapon
 
   def initialize name, weapon
-    if name.capitalize == 'Maximus'
-      @name = name.capitalize
-      @weapon = 'Sword'
-    elsif weapon.capitalize == 'Club' || weapon.capitalize == 'Spear' || weapon.capitalize == 'Trident'
+    # if name.capitalize == 'Maximus'
+    #   @name = name.capitalize
+    #   @weapon = 'Sword'
+    # els
+    if weapon.capitalize == 'Club' || weapon.capitalize == 'Spear' || weapon.capitalize == 'Trident'
       @name = name.capitalize
       @weapon = weapon.capitalize
     else
