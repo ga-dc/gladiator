@@ -33,6 +33,9 @@ class Arena
       "Same weapon. Both die."
     end
   end
+  def remove(wombat)
+    gladiators.delete_if {|gladiator| gladiator.name == "#{wombat}"}
+  end
 end
 
 #testing purposes:
