@@ -1,44 +1,42 @@
-# require 'pry'
+require 'pry'
 
 class Arena
 
-  attr_accessor :name, :gladiators, :fight
+  attr_accessor :name, :gladiators, :fight, :weapon
 
   def initialize name
     @name = name.capitalize
     @gladiators = []
     @fight = []
-    @weapon = ["Spear", "Trident", "Club"]
+    # @weapon = ["Spear", "Trident", "Club"]
+    @weapon = []
   end
 
   def add_gladiator gladiator
     if @gladiators.length < 2
       @gladiators.push(gladiator)
+      @weapon.push(gladiator.weapon)
     end
   end
 
   def fight
     if @gladiators.count == 2
-      if (@gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Trident")
-        @gladiators.delete(@gladiators[0])
-      elsif (@gladiators[0].weapon == "Spear" && @gladiators[1].weapon == "Club")
-        @gladiators.delete(@gladiators[1])
-      elsif (@gladiators[0].weapon == "Trident" && @gladiators[1].weapon == "Club")
-        @gladiators.delete(@gladiators[0])
-      elsif (@gladiators[0].weapon == "Club" && @gladiators[1].weapon == "Club")
+      if @weapon == (["Spear","Trident"] or ["Trident", "Spear"])
+         @gladiators.delete(@gladiators[@weapon.index("Spear")])
+      elsif @weapon == (["Spear","Club"] or ["Club", "Spear"])
+        @gladiators.delete(@gladiators[@weapon.index("Club")])
+      elsif @weapon == (["Trident","Club"] or ["Club", "Trident"])
+        @gladiators.delete(@gladiators[@weapon.index("Trident")])
+      elsif @weapon[0] == @weapon[1]
         @gladiators = []
       end
     end
-end
+  end
 
-# @weapon.each_with_index do |weapon, i|
-#   battle = {
-#     weapon: weapon,
-#     score: i}
-#   end
+  def clear_gladiators name
+      @gladiators.delete(@gladiators[@gladiators.index(name)])
+  end
 
-# if (@gladiators[0].name == "Maximus" && @gladiators[1].name =="Bilcephalon")
-#   @gladiators.delete(@gladiators[0])
 
 end
 
@@ -63,5 +61,5 @@ arena.add_gladiator(maximus)
 arena.add_gladiator(bilcephalon)
 
 
-# binding.pry
+binding.pry
 puts "arena.rb"
