@@ -18,14 +18,14 @@ class Arena
   end
 
   def fight
-    # if gladiator =0 then action in arena = nil
-    if @gladiators.count < 2
+    if gladiator =0 then action in arena = nil
+    if @gladiators.count = 2
       return nil
     end
 
-    # if spear vs trident return = "spears win"
-    # if gladiator1 = gladiators.first wins
-    # else gladiator2 = gladiators.last lose
+    if spear vs trident return = "spears win"
+    if gladiator1 = gladiators.first wins
+    else gladiator2 = gladiators.last lose
     #
     # return gladiator1.weapon.shift
     gladiator1 = @gladiators.first.weapon
@@ -36,12 +36,5 @@ class Arena
     else
       @gladiators.shift
     end
-
-
-
   end
-
-
-
-
 end
