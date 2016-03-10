@@ -28,26 +28,26 @@ describe Arena do
       expect(arena.gladiators).to eq([])
     end
   end
-#
-#   describe "#add_gladiator" do
-#
-#     it "adds a gladiator to the arena" do
-#       arena.add_gladiator(maximus)
-#       expect(arena.gladiators.count).to eq(1)
-#     end
-#     it "can add multiple gladiators" do
-#       arena.add_gladiator(maximus)
-#       arena.add_gladiator(bilcephalon)
-#       expect(arena.gladiators.count).to eq(2)
-#     end
-#     it "does not have more than two gladiators at once" do
-#       arena.add_gladiator(maximus)
-#       arena.add_gladiator(bilcephalon)
-#       arena.add_gladiator(ephates)
-#       expect(arena.gladiators).to_not include(ephates)
-#       expect(arena.gladiators.count).to eq(2)
-#     end
-#   end
+
+  describe "#add_gladiator" do
+
+    it "adds a gladiator to the arena" do
+      arena.add_gladiator(maximus)
+      expect(arena.gladiators.count).to eq(1)
+    end
+    it "can add multiple gladiators" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      expect(arena.gladiators.count).to eq(2)
+    end
+    it "does not have more than two gladiators at once" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      arena.add_gladiator(ephates)
+      expect(arena.gladiators).to_not include(ephates)
+      expect(arena.gladiators.count).to eq(2)
+    end
+  end
 #
 #   describe "#fight" do
 #     context "when there are no gladiators" do
