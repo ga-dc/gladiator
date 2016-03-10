@@ -17,14 +17,28 @@ class Arena
   def add_gladiator(glad)
     if @gladiators.length < 2  #apparently, a while loop messes things up.
       @gladiators << glad
-      #gladiators.length += 1
+      #gladiators.length += 1 is not necessary.
     end
   end
 
   def fight
     if @gladiators.length < 2
     else                        #Why do I need an else statement here but not an else statement in the add_gladiator method
-
+      #if spear weapon vs trident weapon
+        #remove spear gladiator from gladiators array
+        #arena.gladiators.length = 1
+      #else if club weapon vs. spear weapon
+        #kill club
+          #remove club gladiator from gladiators array
+        #arena.gladiators.length = 1
+      #else if trident weapon vs. club weapon
+        #kill trident
+          #remove trident gladiator from gladiators array
+        #arena.gladiators.length = 1
+      #else if weapon = weapon
+        #both gladiators are killed
+          #remove both gladiators from array
+        #arena.gladiators.length = 0
     end
   end
 
