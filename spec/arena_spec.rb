@@ -8,10 +8,11 @@ require './lib/gladiator'
 
 describe Arena do
   let(:arena){Arena.new("megalopolis")}
-  let(:maximus){Gladiator.new("Maximus","Spear")}
-  let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
-  let(:ephates){Gladiator.new("Ephates","Club")}
-  let(:cylodeus){Gladiator.new("Cylodeus","Club")}
+  let(:maximus){Gladiator.new("Maximus","Gladius")}
+  let(:titus){Gladiator.new("Titus","Gladius")}
+  let(:bilcephalon){Gladiator.new("Bilcephalon","Fuscina")}
+  let(:ephates){Gladiator.new("Ephates","Sica")}
+  let(:cylodeus){Gladiator.new("Cylodeus","Sica")}
 
   describe "#name" do
     it "has a name" do
@@ -57,6 +58,7 @@ describe Arena do
       end
     end
 
+
     context "when there is one gladiator" do
       it "does nothing" do
         arena.add_gladiator(maximus)
@@ -65,9 +67,29 @@ describe Arena do
       end
     end
 
-    context "when Spear v Trident" do
-      it "kills: spear when fighting trident" do
+    context "when Maximus fights someone with the same weapon" do
+      it "kills: opponent when fighting Maximus" do
         arena.add_gladiator(maximus)
+        arena.add_gladiator(titus)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators.first).to eq(maximus)
+      end
+    end
+
+    context "when Maximus fights someone who should defeat him" do
+      it "kills: opponent when fighting Maximus" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators.first).to eq(maximus)
+      end
+    end
+
+    context "when gladius v fuscina" do
+      it "kills: gladius when fighting fuscina" do
+        arena.add_gladiator(titus)
         arena.add_gladiator(bilcephalon)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
@@ -75,18 +97,18 @@ describe Arena do
       end
     end
 
-    context "when Club v Spear" do
-      it "kills: club when fighting spear" do
-        arena.add_gladiator(maximus)
+    context "when sica v gladius" do
+      it "kills: sica when fighting gladius" do
+        arena.add_gladiator(titus)
         arena.add_gladiator(ephates)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(maximus)
+        expect(arena.gladiators.first).to eq(titus)
       end
     end
 
-    context "when Trident v Club" do
-      it "kills: trident when fighting club" do
+    context "when fuscina v sica" do
+      it "kills: fuscina when fighting sica" do
         arena.add_gladiator(bilcephalon)
         arena.add_gladiator(ephates)
         arena.fight
@@ -102,6 +124,28 @@ describe Arena do
         arena.fight
         expect(arena.gladiators.count).to eq(0)
       end
+    end
+  end
+
+  describe "#remove_gladiator" do
+    it "removes a gladiator from the arena by name" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      expect(arena.gladiators.count).to eq(2)
+      arena.remove_gladiator(maximus)
+      expect(arena.gladiators.count).to eq(1)
+      expect(arena.gladiators).not_to include(maximus)
+      expect(arena.gladiators).to include(bilcephalon)
+    end
+  end
+
+  describe "#enterained?" do
+    it "checks if crowd is entertained or not" do
+      arena.add_gladiator(maximus)
+      expect(arena.entertained?).to eq(true)
+      arena.add_gladiator(bilcephalon)
+      arena.remove_gladiator(maximus)
+      expect(arena.entertained?).to eq(false)
     end
   end
 end

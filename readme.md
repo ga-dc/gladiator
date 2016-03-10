@@ -28,7 +28,7 @@ The correct solution to this exercise is on the branch called **`solution`**.
 ### Gladiator Spec
 
 * A gladiator has a name
-* A gladiator has a weapon (one of Spear, Club, Trident)
+* A gladiator has a weapon (one of Gladius, Sica, Fuscina)
 
 ### Arena Spec
 
@@ -39,9 +39,9 @@ The correct solution to this exercise is on the branch called **`solution`**.
   * The arena should never have more than 2 gladiators in it at a time
 * If there are two gladiators in the arena, you can call a fight method that results in the elimination of one of the gladiators from the arena.
   * Winning conditions:
-    * Trident beats Spear
-    * Spear beats Club
-    * Club beats Trident
+    * Fuscina beats Gladius
+    * Gladius beats Sica
+    * Sica beats Fuscina
     * If the two gladiators have the same weapon, they are both eliminated.
 
 
