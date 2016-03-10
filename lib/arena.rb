@@ -18,10 +18,14 @@ class Arena
   end
 
 # returns false if no fight can take place, true if there was a tie, and the
-# losing gladiator if a a winner can be determined.
+# losing gladiator if a a winner can be determined. If maximus is in the arena
+# kill other gladiator
   def fight
     if !is_able?
       return false
+    end
+    if maximus?
+      return gladiators.pop
     end
     if is_tie?
       return true
@@ -92,6 +96,18 @@ class Arena
    end
  end
 
+ # returns true if Maximus is in the arena, and puts him on the bottom of the
+ # gladiator array.
+ def maximus?
+   if gladiators.any?{|g| g.name == "Maximus"}
+     if gladiators[1].name == "Maximus"
+       swap_gladiators
+     end
+     return true
+   end
+   return true
+ end
+
 end
 
 maximus = Gladiator.new("Maximus","Trident")
@@ -99,6 +115,6 @@ tim = Gladiator.new("Tim", "Club")
 stan = Gladiator.new("Chebbins", "Spear")
 triborg = Gladiator.new("Triborg","Trident")
 
-arena = Arena.new("Hallway")
+a = Arena.new("Hallway")
 
 binding.pry
