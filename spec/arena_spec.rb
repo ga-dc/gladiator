@@ -12,6 +12,7 @@ describe Arena do
   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
+  let(:juan){Gladiator.new("Juan","Spear")}
 
   describe "#name" do
     it "has a name" do
@@ -28,6 +29,7 @@ describe Arena do
       expect(arena.gladiators).to eq([])
     end
   end
+
 
   describe "#add_gladiator" do
 
@@ -67,7 +69,7 @@ describe Arena do
 
     context "when Spear v Trident" do
       it "kills: spear when fighting trident" do
-        arena.add_gladiator(maximus)
+        arena.add_gladiator(juan)
         arena.add_gladiator(bilcephalon)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
@@ -102,6 +104,25 @@ describe Arena do
         arena.fight
         expect(arena.gladiators.count).to eq(0)
       end
+    end
+  end
+
+  context "when clears gladiator" do
+    it "removes gladiator you passed in from the gladiators array" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      arena.clear_gladiators(maximus)
+      expect(arena.gladiators.first).to eq(bilcephalon)
+    end
+  end
+
+  context "maximus always win" do
+    it "deletes the loser from the Gladiator array" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      arena.fight
+      expect(arena.gladiators.count).to eq(1)
+      expect(arena.gladiators[0]).to eq(bilcephalon)
     end
   end
 end
