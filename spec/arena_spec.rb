@@ -48,7 +48,23 @@ describe Arena do
       expect(arena.gladiators.count).to eq(2)
     end
   end
+  describe "#remove" do
+    it "deletes gladiator by name" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      arena.remove("Maximus")
+      expect(arena.gladiators.count).to eq(1)
+    end
+  end
 
+  describe "max wins" do
+    it "runs max as winner" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      arena.fight
+      expect(arena.gladiators[0].name) == "Maximus"
+    end
+  end
   describe "#fight" do
     context "when there are no gladiators" do
       it "does nothing" do
@@ -101,6 +117,13 @@ describe Arena do
         arena.add_gladiator(cylodeus)
         arena.fight
         expect(arena.gladiators.count).to eq(0)
+      end
+    end
+    describe "#entertained" do
+      it "returns true if Maximus is there" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+        expect(arena.entertained?).to eq(true)
       end
     end
   end
