@@ -104,4 +104,16 @@ describe Arena do
       end
     end
   end
+
+  describe "#remove_fighter" do
+    context "when called on a fighter's name" do
+      it "removes that fighter from the arena" do
+        arena.add_gladiator(ephates)
+        arena.add_gladiator(cylodeus)
+        arena.remove_fighter(ephates)
+        expect(arena.gladiators).to_not include(ephates)
+        expect(arena.gladiators.count).to eq(1)
+      end
+    end
+  end
 end

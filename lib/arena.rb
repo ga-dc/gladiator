@@ -1,5 +1,4 @@
 # require "pry"
-
 require_relative 'gladiator'
 
 class Arena
@@ -35,8 +34,15 @@ class Arena
       end
     end
   end
-end
 
+  def remove_fighter(fighter)
+    @gladiators.each_with_index do |x, i|
+      if fighter == @gladiators[i]
+        @gladiators.delete_at(i)
+      end
+    end
+  end
+end
 
   # arena = Arena.new("circus maximus")
   # max = Gladiator.new("maximus", "spear")
