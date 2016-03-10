@@ -1,10 +1,10 @@
 class Gladiator
-  attr_accessor :name, :weapon 
+  attr_accessor :name, :weapon, :gladiator
 
   def initialize (name, weapon)
     @name = name
     @weapon = weapon
-    # @gladiator = gladiator
+    @gladiator = gladiator
   end
 #
 #   def gladiator (@name, weapon)
