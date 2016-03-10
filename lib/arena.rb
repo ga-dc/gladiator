@@ -15,10 +15,10 @@ class Arena
 # returns false if no fight can take place, true if there was a tie, and the
 # losing gladiator if a a winner can be determined.
   def fight
-    if !self.is_able?
+    if !is_able?
       return false
     end
-    if self.is_tie?
+    if is_tie?
       return true
     end
       sort_win()
@@ -44,15 +44,15 @@ class Arena
  def sort_win
    if gladiators[0].weapon == "Club"
      if gladiators[1].weapon == "Spear"
-       self.swap_players
+       swap_players
      end
    elsif gladiators[0].weapon == "Spear"
      if gladiators[1].weapon == "Trident"
-       self.swap_players
+       swap_players
      end
    else
      if gladiators[1].weapon == "Club"
-       self.swap_players
+       swap_players
      end
    end
  end
