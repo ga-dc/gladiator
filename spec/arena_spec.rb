@@ -103,5 +103,24 @@ describe Arena do
         expect(arena.gladiators.count).to eq(0)
       end
     end
+
+  end
+
+  describe "#remove_by_name" do
+    context "when gladiator is present" do
+      it "removes the gladiator from the arena" do
+        arena.add_gladiator(ephates)
+        arena.remove_by_name("Ephates")
+        expect(arena.gladiators.count).to eq(0)
+      end
+    end
+
+    context "when gladiator is not present" do
+      it "does nothing when the gladiator is not in the arena" do
+        arena.add_gladiator(ephates)
+        arena.remove_by_name("Bob")
+        expect(arena.gladiators.count).to eq(1)
+      end
+    end
   end
 end

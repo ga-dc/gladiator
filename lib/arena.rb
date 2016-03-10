@@ -6,7 +6,7 @@ class Arena
   TRIDENT = "Trident"
   SPEAR = "Spear"
   CLUB = "Club"
-  
+
   def initialize(name)
     @name = name.capitalize
     @gladiators = []
@@ -23,9 +23,6 @@ class Arena
     champion = gladiators.first.weapon
     challenger = gladiators.last.weapon
 
-    puts champion
-    puts challenger
-
     if champion == challenger
       gladiators.clear
     elsif champion == TRIDENT && challenger == SPEAR
@@ -36,6 +33,12 @@ class Arena
       gladiators.pop
     else
       gladiators.shift
+    end
+  end
+
+  def remove_by_name(n)
+    gladiators.reject! do |gladiator|
+      gladiator.name == n
     end
   end
 end
