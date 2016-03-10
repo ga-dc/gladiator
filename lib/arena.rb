@@ -1,5 +1,3 @@
-# require 'pry'
-
 class Arena
 
   attr_accessor :name, :gladiators, :fight, :weapon
@@ -8,8 +6,8 @@ class Arena
     @name = name.capitalize
     @gladiators = []
     @fight = []
-    # @weapon = ["Spear", "Trident", "Club"]
     @weapon = []
+    @entertained = false
   end
 
   def add_gladiator gladiator
@@ -40,30 +38,5 @@ class Arena
   def clear_gladiators name
       @gladiators.delete(@gladiators[@gladiators.index(name)])
   end
-
-
+  
 end
-
-
-class Gladiator
-  # belongs_to :arena
-
-  attr_accessor :name, :weapon
-
-  def initialize name, weapon
-    @name = name
-    @weapon = weapon
-  end
-
-end
-
-
-arena = Arena.new("megalopolis")
-maximus = Gladiator.new("Maximus","Spear")
-bilcephalon = Gladiator.new("Bilcephalon","Trident")
-arena.add_gladiator(maximus)
-arena.add_gladiator(bilcephalon)
-
-
-# binding.pry
-puts "arena.rb"

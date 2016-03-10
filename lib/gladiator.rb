@@ -1,4 +1,3 @@
-
 class Gladiator
   # belongs_to :arena
 
@@ -10,6 +9,3 @@ class Gladiator
   end
 
 end
-
-
-puts "end of gladiator file"
