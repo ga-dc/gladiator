@@ -138,4 +138,14 @@ describe Arena do
       expect(arena.gladiators).to include(bilcephalon)
     end
   end
+
+  describe "#enterained?" do
+    it "checks if crowd is entertained or not" do
+      arena.add_gladiator(maximus)
+      expect(arena.entertained?).to eq(true)
+      arena.add_gladiator(bilcephalon)
+      arena.remove_gladiator(maximus)
+      expect(arena.entertained?).to eq(false)
+    end
+  end
 end

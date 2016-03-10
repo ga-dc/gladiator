@@ -21,6 +21,10 @@ class Arena
     end
   end
 
+  def entertained?
+    (@gladiators.detect { |gladiator| gladiator.name == "Maximus" }) ? true : false
+  end
+
   def fight
     if @gladiators.count == 0
       puts "There are #{@gladiators.count} gladiators in the arena. There shall be no combat!"
