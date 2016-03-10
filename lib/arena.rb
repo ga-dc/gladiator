@@ -14,8 +14,18 @@ class Arena
   #   @gladiators = []
   # end
 
-  def add_gladiator(gladiator)
-    gladiators << gladiator
+  def add_gladiator(glad)
+    if @gladiators.length < 2  #apparently, a while loop messes things up.
+      @gladiators << glad
+      #gladiators.length += 1
+    end
+  end
+
+  def fight
+    if @gladiators.length < 2
+    else                        #Why do I need an else statement here but not an else statement in the add_gladiator method
+
+    end
   end
 
 end
