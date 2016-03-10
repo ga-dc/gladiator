@@ -15,5 +15,11 @@ puts "#{@gladiators.count}"
 end
 end
 
+def fight
+if @gladiators.count == 0
+  puts "You have no Gladiator in the arena"
+end
+end
+
 
 end
