@@ -3,8 +3,8 @@ require_relative 'lib/arena.rb'
 require_relative 'lib/gladiator.rb'
 
 arena = Arena.new("Ring of Death")
-a = Gladiator.new("Bilcephalon","Club")
-b = Gladiator.new("Max","Spear")
+a = Gladiator.new("Bilcephalon","Trident")
+b = Gladiator.new("Bob","Spear")
 
 
 

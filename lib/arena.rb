@@ -1,7 +1,7 @@
 require "pry"
 
 class Arena
-  attr_accessor(:name, :gladiators)
+  attr_accessor(:name, :gladiators, :vote, :losing_gladiators)
 
   def initialize(name)
       @name = name.capitalize
@@ -20,6 +20,8 @@ class Arena
   def fight
     return if @gladiators.length <= 1
 
+    @losing_gladiators = []
+    puts "#{@gladiators.first.weapon} and #{@gladiators.last.weapon}"
     if @gladiators.any? { |gladiator| gladiator.name == "Maximus"}
     puts "Maximus won!"
     return
@@ -28,7 +30,9 @@ class Arena
         @gladiators.clear
 
     elsif @gladiators.first.weapon == "Spear" && @gladiators.last.weapon == "Trident"
-        @gladiators.shift
+      puts "Hi"
+        @losing_gladiators << @gladiators[0]
+        #@gladiators.shift
 
     elsif @gladiators.first.weapon == "Club" && @gladiators.last.weapon == "Spear"
         @gladiators.shift
@@ -36,11 +40,23 @@ class Arena
     elsif @gladiators.first.weapon == "Trident" && @gladiators.last.weapon == "Club"
         @gladiators.shift
 
-    else @gladiators.pop
+  #  else @gladiators.pop
     end
       # pop removes and keeps the last item in the array
       # shift removes and keeps first item in array
   end # end fight
+
+  def vote
+    puts "Vote thumbs down to eliminate the losing gladiator, thumbs up to eliminate the winner. Type 'down' or 'up'."
+
+    @vote = gets.chomp
+  end # end vote
+
+  def entertained?
+    if @gladiators.any? { |gladiator| gladiator.name == "Maximus"}
+    puts "The crowd is entertained!"
+    end # end entertained?
+  end
 
 end #end Arena
 
