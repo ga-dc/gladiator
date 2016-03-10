@@ -28,7 +28,7 @@ describe Arena do
       expect(arena.gladiators).to eq([])
     end
   end
-
+  #
   describe "#add_gladiator" do
 
     it "adds a gladiator to the arena" do
@@ -49,6 +49,35 @@ describe Arena do
     end
   end
 
+  describe "#remove_gladiator" do
+    it "removes a gladiator by name from the arena" do
+      arena.add_gladiator(maximus)
+      arena.add_gladiator(bilcephalon)
+      arena.remove_gladiator(bilcephalon)
+      expect(arena.gladiators.count).to eq(1)
+      expect(arena.gladiators[0]).to eq(maximus)
+    end
+  end
+
+  describe "#entertained?" do
+    context "when maximus is in the arena" do
+      it "the crowd cheers" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+        arena.entertained
+        expect(arena.entertained).to eq("The crowd cheers!")
+      end
+    end
+    context "when maximus is not in the arena" do
+      it "the crowd boos" do
+        arena.add_gladiator(ephates)
+        arena.add_gladiator(bilcephalon)
+        arena.entertained
+        expect(arena.entertained).to eq("The crowd boos!")
+      end
+    end
+  end
+
   describe "#fight" do
     context "when there are no gladiators" do
       it "does nothing" do
@@ -65,33 +94,35 @@ describe Arena do
       end
     end
 
-    context "when Spear v Trident" do
-      it "kills: spear when fighting trident" do
-        arena.add_gladiator(maximus)
-        arena.add_gladiator(bilcephalon)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators[0]).to eq(bilcephalon)
+    context "when the emperor sides with the winner" do
+      context "when Spear v Trident" do
+        it "kills: spear when fighting trident" do
+          arena.add_gladiator(maximus)
+          arena.add_gladiator(bilcephalon)
+          arena.fight
+          expect(arena.gladiators.count).to eq(1)
+          expect(arena.gladiators[0]).to eq(bilcephalon)
+        end
       end
-    end
 
-    context "when Club v Spear" do
-      it "kills: club when fighting spear" do
-        arena.add_gladiator(maximus)
-        arena.add_gladiator(ephates)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(maximus)
+      context "when Club v Spear" do
+        it "kills: club when fighting spear" do
+          arena.add_gladiator(maximus)
+          arena.add_gladiator(ephates)
+          arena.fight
+          expect(arena.gladiators.count).to eq(1)
+          expect(arena.gladiators.first).to eq(maximus)
+        end
       end
-    end
 
-    context "when Trident v Club" do
-      it "kills: trident when fighting club" do
-        arena.add_gladiator(bilcephalon)
-        arena.add_gladiator(ephates)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(ephates)
+      context "when Trident v Club" do
+        it "kills: trident when fighting club" do
+          arena.add_gladiator(bilcephalon)
+          arena.add_gladiator(ephates)
+          arena.fight
+          expect(arena.gladiators.count).to eq(1)
+          expect(arena.gladiators.first).to eq(ephates)
+        end
       end
     end
 
