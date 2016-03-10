@@ -1,22 +1,21 @@
 class Arena
-    attr_accessor :name
+    attr_accessor :name, :gladiators
 
     def initialize (name)
       @name = name.capitalize
-      @gladiator = []
+      @gladiators = []
     end
 
-    def gladiator (name, weapon)
-      @gladiator = []
+    def add_gladiator (gladiator)
+      @gladiators << gladiator
+    # when gladiator.length < 2
+    #   puts "hi"
     end
 
-    def add_gladiator (name, weapon)
-      add_gladiator = []
-    end
-
-  def fight()
-    fight = fight
-  # when
-  end
-
+  # def fight(gladiator,weapon)
+  #   fight = fight
+  #     gladiator.name =
+  #
+  # # when
+  # end
 end
