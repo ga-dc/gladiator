@@ -1,12 +1,20 @@
-require 'pry'
+#require 'pry'
 require_relative 'lib/arena.rb'
 require_relative 'lib/gladiator.rb'
 
-gladiator = Gladiator.new("Hercules", "Spear")
+# arena = Arena.new("Ring of Death")
+# b = Gladiator.new("Bilcephalon","Club")
+# m = Gladiator.new("Maximus","Spear")
+#
+#
+# arena.add_gladiator(m)
+# arena.add_gladiator(b)
+# puts "#{arena}"
 
-arena = Arena.new("Ring of Death")
 
 
-binding.pry
+
+
+#binding.pry
 
 puts "done"

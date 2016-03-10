@@ -6,3 +6,5 @@ class Gladiator
       @weapon = weapon
   end
 end
+
+#gladiator = Gladiator.new("Hercules", "Spear")
