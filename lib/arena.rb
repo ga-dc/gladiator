@@ -28,10 +28,9 @@ class Arena
 
   def entertained?
     @gladiators.each do |gladiator|
-      if gladiator.name.include?("Maximus") == true
+      if gladiator.name.index("Maximus") != nil
         puts "The crowd is entertained."
-        break
-      else
+      elsif @gladiators[0].name != "Maximus" && @gladiators[1].name != "Maximus"
         puts "The crowd is NOT entertained."
         break
       end
@@ -70,7 +69,7 @@ robin = Gladiator.new("robin", "spear")
 maximus = Gladiator.new("maximus", "spear")
 
 dupont = Arena.new("dupont")
-dupont.add_gladiator maximus
+dupont.add_gladiator adrian
 dupont.add_gladiator robin
 
 binding.pry
