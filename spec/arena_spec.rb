@@ -8,7 +8,8 @@ require './lib/gladiator'
 
 describe Arena do
   let(:arena){Arena.new("megalopolis")}
-  let(:maximus){Gladiator.new("Maximus","Spear")}
+  let(:maximus){Gladiator.new("Maximus","Sword")}
+  let(:patrick){Gladiator.new("Patrick", "Spear")}
   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
@@ -67,7 +68,7 @@ describe Arena do
 
     context "when Spear v Trident" do
       it "kills: spear when fighting trident" do
-        arena.add_gladiator(maximus)
+        arena.add_gladiator(patrick)
         arena.add_gladiator(bilcephalon)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
@@ -101,6 +102,43 @@ describe Arena do
         arena.add_gladiator(cylodeus)
         arena.fight
         expect(arena.gladiators.count).to eq(0)
+      end
+    end
+  end
+
+  describe "#remove" do
+    it "removes a gladiator from the arena" do
+      arena.add_gladiator(ephates)
+      arena.add_gladiator(cylodeus)
+      arena.remove(cylodeus)
+      expect(arena.gladiators.count).to eq(1)
+    end
+  end
+
+  describe "Maximus" do
+    context "if maximus is in the arena" do
+      it "arena only contains maximus" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+        arena.fight
+        expect(arena.gladiators).to contain_exactly(maximus)
+      end
+    end
+  end
+
+  describe "#entertained?" do
+    context "if Maximus is in the arena" do
+      it "is true" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+        expect(arena.entertained?).to be(true)
+      end
+    end
+    context "if Maximus is not in the arena" do
+      it "is false" do
+        arena.add_gladiator(bilcephalon)
+        arena.add_gladiator(cylodeus)
+        expect(arena.entertained?).to be(false)
       end
     end
   end

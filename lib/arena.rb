@@ -1,9 +1,11 @@
 class Arena
-  attr_accessor :name, :gladiators
+  attr_accessor :name, :gladiators, :battle, :gladiator_names
 
   def initialize(name, gladiators = [])
     @name = name.capitalize
     @gladiators = gladiators
+    @battle = []
+    @gladiator_names = []
   end
 
   def add_gladiator(gladiator)
@@ -12,16 +14,18 @@ class Arena
 
   def fight
     unless gladiators.length < 2
-      battle = []
       gladiators.each do |gladiator|
-        battle << gladiator.weapon
+          battle << gladiator.weapon
+          gladiator_names << gladiator.name
       end
       get_winner(battle)
     end
   end
 
   def get_winner(battle)
-    if battle.sort! == ["Spear", "Trident"]
+    if gladiator_names.include?("Maximus")
+      gladiators.delete_if {|gladiator| gladiator.name != "Maximus"}
+    elsif battle.sort! == ["Spear", "Trident"]
       gladiators.delete_if {|gladiator| gladiator.weapon == "Spear"}
     elsif battle.sort! == ["Club", "Spear"]
       gladiators.delete_if {|gladiator| gladiator.weapon == "Club"}
@@ -33,6 +37,16 @@ class Arena
   end
 
   def remove(gladiator)
+    gladiators.delete(gladiator)
+  end
 
+  def entertained?
+    gladiators.each do |gladiator|
+      if gladiator.name == "Maximus"
+        return true
+      else
+        return false
+      end
+    end
   end
 end
