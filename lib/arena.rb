@@ -6,5 +6,9 @@ class Arena
     @gladiators = gladiators
   end
 
+def add_gladiator new_gladiator_name
+  @gladiators << new_gladiator_name
+end
+
 
 end
