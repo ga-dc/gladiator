@@ -24,17 +24,17 @@ class Arena
       first_gladiator = @gladiators[0]
       second_gladiator = @gladiators[1]
       puts "#{first_gladiator.name} fights #{second_gladiator.name}. Morituri te salutamus!"
-      if (first_gladiator.weapon == "Spear") && (second_gladiator.weapon == "Club")
+      if (first_gladiator.weapon == "Gladius") && (second_gladiator.weapon == "Sica")
         @gladiators.pop
-      elsif (first_gladiator.weapon == "Club") && (second_gladiator.weapon == "Trident")
+      elsif (first_gladiator.weapon == "Sica") && (second_gladiator.weapon == "Fuscina")
         @gladiators.pop
-      elsif (first_gladiator.weapon == "Trident") && (second_gladiator.weapon == "Spear")
+      elsif (first_gladiator.weapon == "Fuscina") && (second_gladiator.weapon == "Gladius")
         @gladiators.pop
-      elsif (second_gladiator.weapon == "Spear") && (first_gladiator.weapon == "Club")
+      elsif (second_gladiator.weapon == "Gladius") && (first_gladiator.weapon == "Sica")
         @gladiators.shift
-      elsif (second_gladiator.weapon == "Club") && (first_gladiator.weapon == "Trident")
+      elsif (second_gladiator.weapon == "Sica") && (first_gladiator.weapon == "Fuscina")
         @gladiators.shift
-      elsif (second_gladiator.weapon == "Trident") && (first_gladiator.weapon == "Spear")
+      elsif (second_gladiator.weapon == "Fuscina") && (first_gladiator.weapon == "Gladius")
         @gladiators.shift
       elsif first_gladiator.weapon == second_gladiator.weapon
         until @gladiators.count == 0

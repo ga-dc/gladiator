@@ -8,10 +8,10 @@ require './lib/gladiator'
 
 describe Arena do
   let(:arena){Arena.new("megalopolis")}
-  let(:maximus){Gladiator.new("Maximus","Spear")}
-  let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
-  let(:ephates){Gladiator.new("Ephates","Club")}
-  let(:cylodeus){Gladiator.new("Cylodeus","Club")}
+  let(:maximus){Gladiator.new("Maximus","Gladius")}
+  let(:bilcephalon){Gladiator.new("Bilcephalon","Fuscina")}
+  let(:ephates){Gladiator.new("Ephates","Sica")}
+  let(:cylodeus){Gladiator.new("Cylodeus","Sica")}
 
   describe "#name" do
     it "has a name" do
@@ -65,8 +65,8 @@ describe Arena do
       end
     end
 
-    context "when Spear v Trident" do
-      it "kills: spear when fighting trident" do
+    context "when gladius v fuscina" do
+      it "kills: gladius when fighting fuscina" do
         arena.add_gladiator(maximus)
         arena.add_gladiator(bilcephalon)
         arena.fight
@@ -75,8 +75,8 @@ describe Arena do
       end
     end
 
-    context "when Club v Spear" do
-      it "kills: club when fighting spear" do
+    context "when sica v gladius" do
+      it "kills: sica when fighting gladius" do
         arena.add_gladiator(maximus)
         arena.add_gladiator(ephates)
         arena.fight
@@ -85,8 +85,8 @@ describe Arena do
       end
     end
 
-    context "when Trident v Club" do
-      it "kills: trident when fighting club" do
+    context "when fuscina v sica" do
+      it "kills: fuscina when fighting sica" do
         arena.add_gladiator(bilcephalon)
         arena.add_gladiator(ephates)
         arena.fight
