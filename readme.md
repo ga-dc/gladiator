@@ -7,18 +7,18 @@ you build it well.
 
 ## How to do this assignment
 
-1. In the gladiator folder, run `bundle install` to make sure you have the right gems installed
-2. Run `rspec` to run your tests. They should all fail.
+<!-- 1. In the gladiator folder, run `bundle install` to make sure you have the right gems installed -->
+<!-- 2. Run `rspec` to run your tests. They should all fail.
 3. Start with the `Gladiator` tests / class (see steps below)
-4. Then do the `Arena` tests / class (see steps below)
+4. Then do the `Arena` tests / class (see steps below) -->
 
 For each individual test:
 
-1. Read the error message.
+<!-- 1. Read the error message.
 2. Make the smallest change in your code to fix the error.
 3. Run the test.
 4. Repeat 1 - 3 until the test passes
-5. Move to the next test.
+5. Move to the next test. -->
 
 ### Note about the solution
 
@@ -27,15 +27,15 @@ The correct solution to this exercise is on the branch called **`solution`**.
 ## Specs
 ### Gladiator Spec
 
-* A gladiator has a name
-* A gladiator has a weapon (one of Spear, Club, Trident)
+<!-- A gladiator has a name
+* A gladiator has a weapon (one of Spear, Club, Trident) -->
 
 ### Arena Spec
 
-* An arena has a name
+<!-- * An arena has a name
   * The name should be capitalized
 * An arena can have gladiators
-* You can add a gladiator to the arena
+* You can add a gladiator to the arena -->
   * The arena should never have more than 2 gladiators in it at a time
 * If there are two gladiators in the arena, you can call a fight method that results in the elimination of one of the gladiators from the arena.
   * Winning conditions:
