@@ -13,9 +13,9 @@ describe Arena do
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
 
-  describe "#name" do
-    it "has a name" do
-      expect(arena.name).to_not be_nil
+  describe "#name" do # the attribute
+    it "has a name" do  # has name value
+      expect(arena.name).to_not be_nil # expect to have value
     end
 
     it "is always capitalized" do
@@ -23,18 +23,21 @@ describe Arena do
     end
   end
 
-  describe "#gladiators" do
+  describe "#gladiators" do # the attribute
     it "starts empty" do
       expect(arena.gladiators).to eq([])
     end
   end
 
-  describe "#add_gladiator" do
 
+
+  describe "#add_gladiator" do
     it "adds a gladiator to the arena" do
       arena.add_gladiator(maximus)
       expect(arena.gladiators.count).to eq(1)
     end
+
+
     it "can add multiple gladiators" do
       arena.add_gladiator(maximus)
       arena.add_gladiator(bilcephalon)
@@ -65,6 +68,7 @@ describe Arena do
       end
     end
 
+
     context "when Spear v Trident" do
       it "kills: spear when fighting trident" do
         arena.add_gladiator(maximus)
@@ -74,34 +78,71 @@ describe Arena do
         expect(arena.gladiators[0]).to eq(bilcephalon)
       end
     end
+    #
+    #
+    #
 
-    context "when Club v Spear" do
-      it "kills: club when fighting spear" do
-        arena.add_gladiator(maximus)
-        arena.add_gladiator(ephates)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(maximus)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+#
+#     context "when Club v Spear" do
+#       it "kills: club when fighting spear" do
+#         arena.add_gladiator(maximus)
+#         arena.add_gladiator(ephates)
+#         arena.fight
+#         expect(arena.gladiators.count).to eq(1)
+#         expect(arena.gladiators.first).to eq(maximus)
+#       end
+#     end
+#
+# #
+#
+# #
+#
+#
+#
+#
+#
+# #
+# #
+#
+#     context "when Trident v Club" do
+#       it "kills: trident when fighting club" do
+#         arena.add_gladiator(bilcephalon)
+#         arena.add_gladiator(ephates)
+#         arena.fight
+#         expect(arena.gladiators.count).to eq(1)
+#         expect(arena.gladiators.first).to eq(ephates)
+#       end
+#     end
+#
+#     context "when same Weapons" do
+#       it "kills: both if their weapons are the same" do
+#         arena.add_gladiator(ephates)
+#         arena.add_gladiator(cylodeus)
+#         arena.fight
+#         expect(arena.gladiators.count).to eq(0)
       end
     end
-
-    context "when Trident v Club" do
-      it "kills: trident when fighting club" do
-        arena.add_gladiator(bilcephalon)
-        arena.add_gladiator(ephates)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(ephates)
-      end
-    end
-
-    context "when same Weapons" do
-      it "kills: both if their weapons are the same" do
-        arena.add_gladiator(ephates)
-        arena.add_gladiator(cylodeus)
-        arena.fight
-        expect(arena.gladiators.count).to eq(0)
-      end
-    end
-  end
-end
+#   end
+# end
