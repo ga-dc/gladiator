@@ -16,7 +16,7 @@ class Arena
     gladiators << gladiator if gladiators.length < ARENA_SIZE
   end
 
-  def fight(life=false) #life IS fair by default aka it is false that life isn't fair
+  def fight(life=true)
     return if gladiators.length < ARENA_SIZE
 
     if maximus?
@@ -30,16 +30,16 @@ class Arena
       elsif (champion == TRIDENT && challenger == SPEAR) ||
         (champion == SPEAR && challenger == CLUB) ||
         (champion == CLUB && challenger == TRIDENT) #all conditions where first gladiator wins
-        if life_isnt_fair(life)
-          gladiators.shift
-        else
+        if life_fair?(life)
           gladiators.pop
+        else
+          gladiators.shift
         end
       else #all conditions where first gladiator loses
-         if life_isnt_fair(life)
-           gladiators.pop
-         else
+         if life_fair?(life)
            gladiators.shift
+         else
+           gladiators.pop
          end
       end
     end
@@ -61,7 +61,7 @@ class Arena
     gladiators.any?{|gladiator| gladiator.name == "Maximus"}
   end
 
-  def life_isnt_fair(fair = false) # true for thumbs down, false for thunbs up
+  def life_fair?(fair = true)
     life = fair
 
     # puts "The Emperor wants YOU to choose the fate of these brave warriors! Type 'U' to give him a thumbs up and reward the winning gladiator. Type 'D' to give him a thumbs down and declare victory for the challenger."

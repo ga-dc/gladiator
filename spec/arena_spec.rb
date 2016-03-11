@@ -152,12 +152,12 @@ describe Arena do
     end
   end
 
-  describe "#life_isnt_fair" do
+  describe "#life_fair?" do
     context "when the audience thumbs up" do
       it "removes the losing gladiator" do
         arena.add_gladiator(bob)
         arena.add_gladiator(bilcephalon)
-        arena.fight(false)
+        arena.fight(true)
         expect(arena.gladiators.count).to eq(1)
         expect(arena.gladiators[0]).to eq(bilcephalon)
       end
@@ -167,7 +167,7 @@ describe Arena do
       it "removes the winning gladiator" do
         arena.add_gladiator(bob)
         arena.add_gladiator(bilcephalon)
-        arena.fight(true)
+        arena.fight(false)
         expect(arena.gladiators.count).to eq(1)
         expect(arena.gladiators[0]).to eq(bob)
       end
