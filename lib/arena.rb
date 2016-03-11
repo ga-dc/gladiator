@@ -28,23 +28,23 @@ class Arena
   end
 
   # * If there are two gladiators in the arena, you can call a fight method that results in the elimination of one of the gladiators from the arena.
-  def fight
-
-  end
-
   # * Winning conditions:
   #   * Trident beats Spear
   #   * Spear beats Club
   #   * Club beats Trident
   #   * If the two gladiators have the same weapon, they are both eliminated.
-  def check_winner
-
+  def fight
+    if @gladiators.length == 2
+      if @gladiators.first.weapon == @gladiators.last.weapon
+        @gladiators.pop(2)
+      elsif @gladiators.first.weapon == "Spear" && @gladiators.last.weapon == "Trident"
+        @gladiators.shift(1)
+      elsif @gladiators.first.weapon == "Spear" && @gladiators.last.weapon == "Club"
+        @gladiators.pop(1)
+      elsif @gladiators.first.weapon == "Trident" && @gladiators.last.weapon == "Club"
+        @gladiators.shift(1)
+      end
+    end
   end
-
-
-
-
-
-
 
 end
