@@ -1,3 +1,5 @@
+require "pry"
+require_relative "./gladiator"
 
 class Arena
   attr_accessor :name, :gladiators
@@ -15,34 +17,16 @@ class Arena
 
   def fight
     if gladiators.length >= 2
-      elsif gladiators[0].name == "Maximus"
+      if gladiators[0].name == "Maximus"
         @gladiators.pop
-      elsif gladiators[1].name == "maximus"
+      elsif gladiators[1].name == "Maximus"
         @gladiators.shift
       elsif gladiators[0].weapon == "Spear" && gladiators[1].weapon == "Club"
-        puts "thumbs up or thumbs down?"
-        up_or_down = gets.chomp
-        if up_or_down == "thumbs down"
-          @gladiators.pop
-        elsif up_or_down == "thumbs up"
-          @gladiators.shift
-        end
+        the_vote
       elsif gladiators[0].weapon == "Club" && gladiators[1].weapon == "Trident"
-        puts "thumbs up or thumbs down?"
-        up_or_down = gets.chomp
-        if up_or_down == "thumbs down"
-          @gladiators.pop
-        elsif up_or_down == "thumbs up"
-          @gladiators.shift
-        end
+        the_vote
       elsif gladiators[0].weapon == "Trident" && gladiators[1].weapon == "Spear"
-        puts "thumbs up or thumbs down?"
-        up_or_down = gets.chomp
-        if up_or_down == "thumbs down"
-          @gladiators.pop
-        elsif up_or_down == "thumbs up"
-          @gladiators.shift
-        end
+        the_vote
       elsif gladiators[0].weapon == gladiators[1].weapon
         @gladiators = []
       else
@@ -53,6 +37,7 @@ class Arena
         elsif up_or_down == "thumbs up"
           @gladiators.pop
         end
+      end
     end
   end
 
@@ -66,20 +51,29 @@ class Arena
     end
   end
 
+  def the_vote
+    puts "thumbs up or thumbs down?"
+    up_or_down = gets.chomp
+    if up_or_down == "thumbs down"
+      @gladiators.pop
+    elsif up_or_down == "thumbs up"
+      @gladiators.shift
+    end
+  end
 end
 
-# thunder = Arena.new("area")
-#
-# g = Gladiator.new("g", "club")
-# m = Gladiator.new("m", "spear")
-#
-# thunder.add_gladiator m
-# thunder.add_gladiator g
-#
-# thunder.fight
-#
-#
-#
-#
-# binding.pry
-# puts "hi"
+thunder = Arena.new("area")
+
+g = Gladiator.new("g", "club")
+m = Gladiator.new("m", "spear")
+
+thunder.add_gladiator m
+thunder.add_gladiator g
+
+thunder.fight
+
+
+
+
+binding.pry
+puts "hi"
