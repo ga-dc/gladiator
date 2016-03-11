@@ -69,7 +69,7 @@ class Arena
     # input = gets.chomp.downcase
     #
     # if input == 'd'
-    #   life = true
+    #   life = false
     # end
     #
     # life
