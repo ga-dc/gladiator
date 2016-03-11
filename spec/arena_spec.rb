@@ -1,7 +1,7 @@
 require 'spec_helper'
 require_relative '../lib/gladiator'
 require_relative '../lib/arena'
-
+require "pry"
 require 'spec_helper'
 require './lib/arena'
 require './lib/gladiator'
