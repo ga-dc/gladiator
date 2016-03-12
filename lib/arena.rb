@@ -59,12 +59,13 @@ class Arena
     def fight(loser_dies = true)
         if gladiators.size == 2
             # Maximus should always win
-            maximus_i = gladiators.index(gladiators.find {|gladiator|
-                                             gladiator.name == "Maximus"})
-            return gladiators.delete_at(1-maximus_i) if maximus_i
-
-            # No one shall live with the same weapon
-            if gladiators[0].weapon == gladiators[1].weapon
+            maximus_i = gladiators.find_index do |gladiator|
+                            gladiator.name == "Maximus"
+                        end
+            if maximus_i
+                return self.gladiators.delete_at(1-maximus_i)
+            elsif gladiators[0].weapon == gladiators[1].weapon
+                # No one shall live with the same weapon
                 return self.gladiators = []
             end
 
@@ -74,7 +75,6 @@ class Arena
             else
                 gladiators.delete(loser)
             end
-
         end
     end
 
