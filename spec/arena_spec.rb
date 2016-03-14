@@ -64,16 +64,16 @@ describe Arena do
         expect(arena.gladiators.count).to eq(1)
       end
     end
-  #
-  #   context "when Spear v Trident" do
-  #     it "kills: spear when fighting trident" do
-  #       arena.add_gladiator(maximus)
-  #       arena.add_gladiator(bilcephalon)
-  #       arena.fight
-  #       expect(arena.gladiators.count).to eq(1)
-  #       expect(arena.gladiators[0]).to eq(bilcephalon)
-  #     end
-  #   end
+
+    context "when Spear v Trident" do
+      it "kills: spear when fighting trident" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators[0]).to eq(bilcephalon)
+      end
+    end
   #
   #   context "when Club v Spear" do
   #     it "kills: club when fighting spear" do

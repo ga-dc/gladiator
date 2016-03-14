@@ -1,6 +1,6 @@
 class Arena
 
-  attr_accessor :name, :gladiators, :weapons
+  attr_accessor :name, :gladiators
 
   def initialize(name)
     @name = name.capitalize
@@ -23,18 +23,27 @@ class Arena
 
   def start_fight(weapon)
     if @gladiators.length == 2
-      #compare weapons (tridentVspear, clubVspear, spearVclub)
+      #compare weapons (tridentVspear, clubVspear, tridentVclub, sameVsame)
+
       #create if statements with weapon combinations
-      if @gladiators[0].weapon && @gladiators[1].weapon
-            # remove gladiator with spear from array
-          @gladiators.delete[1]
-      end
+      if @gladiators.weapon(0) && @gladiators.weapon(1)
+        # remove gladiator with spear from array
+        @gladiators.delete_at(0)
+      #end
+
+    #   elsif @gladiators.weapon(0) && @gladiators.weapon(2)
+    #     # remove gladiator with club from array
+    #     @gladiators.delete_at(2)
+    #   end
+    #
+    #   elsif @gladiators.weapon(1) && @gladiators.weapon(2)
+    #     # remove gladiator with trident from array
+    #     @gladiators.delete_at(1)
+    #   end
+    #
+    #   else # they have the same weapon, both deleted
+    #     @gladiators.delete.all
+    #   end
     end
   end
-
 end
-
-megalopolis = Arena.new("megalopolis")
-maximus = Gladiator.new("Maximus", "Trident")
-tiffany = Gladiator.new("Belle", "Spear")
-gort = Gladiator.new("Gort", "Club")
