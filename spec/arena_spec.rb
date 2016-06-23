@@ -59,7 +59,7 @@ describe Arena do
         expect(arena.gladiators.count).to eq(0)
       end
     end
-
+    # Done - arena.rb line 21
     context "when there is one gladiator" do
       it "does nothing" do
         arena.add_gladiator(maximus)
@@ -67,7 +67,7 @@ describe Arena do
         expect(arena.gladiators.count).to eq(1)
       end
     end
-
+    # Done - arena.rb line 21
     context "when Spear v Trident" do
       it "kills: spear when fighting trident" do
         arena.add_gladiator(maximus)
@@ -77,7 +77,7 @@ describe Arena do
         expect(arena.gladiators[0]).to eq(bilcephalon)
       end
     end
-
+    # Done - arena.rb line 21
     context "when Club v Spear" do
       it "kills: club when fighting spear" do
         arena.add_gladiator(maximus)
@@ -87,7 +87,7 @@ describe Arena do
         expect(arena.gladiators.first).to eq(maximus)
       end
     end
-
+    # Done - arena.rb line 21
     context "when Trident v Club" do
       it "kills: trident when fighting club" do
         arena.add_gladiator(bilcephalon)
@@ -97,7 +97,7 @@ describe Arena do
         expect(arena.gladiators.first).to eq(ephates)
       end
     end
-
+    # Done - arena.rb line 21
     context "when same Weapons" do
       it "kills: both if their weapons are the same" do
         arena.add_gladiator(ephates)
@@ -108,3 +108,4 @@ describe Arena do
     end
   end
 end
+# Done - arena.rb line 21

@@ -20,6 +20,25 @@ class Arena
       gladiators << gladiator
     end
   end
-
+  
+  # Test 7 When no Gladiators are in the arena nothing happens
+  # Test 8 When only one Gladiator is in the arena nothing happens
+  # Test 9 Spear vs Trident
+  # Test 10 Club vs Spear
+  # Test 11 Trident vs Club
+  # Test 12 Both lose if weapons are the same
+  def fight
+    if @gladiators.length == 2
+      if @gladiators.first.weapon == @gladiators.last.weapon
+        @gladiators.pop(2)
+      elsif @gladiators.first.weapon == "Spear" && @gladiators.last.weapon == "Trident"
+        @gladiators.shift(1)
+      elsif @gladiators.first.weapon == "Spear" && @gladiators.last.weapon == "Club"
+        @gladiators.pop(1)
+      elsif @gladiators.first.weapon == "Trident" && @gladiators.last.weapon == "Club"
+        @gladiators.shift(1)
+      end
+    end
+  end
 
 end
