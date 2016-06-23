@@ -8,34 +8,32 @@ class Arena
 
   def add_gladiator(name)
     if @gladiators.count < 2
-    @gladiators<< name
-  else
-    puts "Only two gladiators allowed per Arena"
+      @gladiators<< name
+    else
+      puts "Only two gladiators allowed per Arena"
     end
   end
 
   def fight
-   if @gladiators.count == 2
-     @gladiators[0]
-     @gladiators[1]
-     if @gladiators[0].weapon == 'Trident'&& @gladiators[1].weapon != 'Club'
-         @gladiators.delete_at(1)
-       end
-    if @gladiators[0].weapon == 'Spear'&& @gladiators[1].weapon != 'Trident'
-          @gladiators.delete_at(1)
-        end
-    if @gladiators[0].weapon == 'Club'&& @gladiators[1].weapon != 'Spear'
-             @gladiators.delete_at(1)
-          end
+    if @gladiators.count == 2
 
-  if @gladiators[0].weapon == @gladiators[1].weapon
-           @gladiators.delete_at(0)
-           @gladiators.delete_at(1)
+      if @gladiators[0].weapon == @gladiators[1].weapon
+        @gladiators.delete_at(1)
+        @gladiators.delete_at(0)
 
-       else
-         @gladiators.delete_at(0)
-       end
-     end
+      elsif @gladiators[0].weapon == 'Trident'&& @gladiators[1].weapon != 'Club'
+        @gladiators.delete_at(1)
+
+      elsif @gladiators[0].weapon == 'Spear'&& @gladiators[1].weapon != 'Trident'
+        @gladiators.delete_at(1)
+      elsif @gladiators[0].weapon == 'Club'&& @gladiators[1].weapon != 'Spear'
+        @gladiators.delete_at(1)
+
+
+      else
+        @gladiators.delete_at(0)
+      end
+    end
   end
 
 
