@@ -44,6 +44,7 @@ class Arena
   end
 
   def remove_gladiator_by_name name
-    # TODO
+    # @gladiators.reject! { |g| g.name = name }
+    @gladiators.reject!(&:name)
   end
 end
