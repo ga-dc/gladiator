@@ -20,7 +20,7 @@ class Arena
       gladiators << gladiator
     end
   end
-  
+
   # Test 7 When no Gladiators are in the arena nothing happens
   # Test 8 When only one Gladiator is in the arena nothing happens
   # Test 9 Spear vs Trident
