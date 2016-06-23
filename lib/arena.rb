@@ -42,4 +42,8 @@ class Arena
       end
     end
   end
+
+  def remove_gladiator_by_name name
+    # TODO
+  end
 end
