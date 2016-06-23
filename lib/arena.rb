@@ -1,7 +1,8 @@
 require_relative "./gladiator"
 
 class Arena
-  attr_accessor :name, :gladiators
+  attr_accessor :name
+  attr_reader :gladiators
 
   def initialize(name)
     @name = name.capitalize

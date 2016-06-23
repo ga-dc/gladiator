@@ -16,54 +16,114 @@ If there are two gladiators in the arena, you can call a fight method that resul
     If the two gladiators have the same weapon, they are both eliminated.
 =end
 
-describe Gladiator do
-  it "has a name that is capitalized"
-  it "can have gladiators"
+describe Arena do
+  # Create an arana.
+  let(:arena) { Arena.new("suzuka circuit") }
+
+  # Create gladiators with different weapons.
+  let(:spear_1) { Gladiator.new("spear_1", "spear") }
+  let(:spear_2) { Gladiator.new("spear_2", "spear") }
+  let(:club_1) { Gladiator.new("club_1", "club") }
+  let(:trident_1) { Gladiator.new("trident_1", "trident") }
+
+  it "has a name that is capitalized" do
+    expect(arena.name).to eq "Suzuka circuit"
+  end
+  it "can have gladiators" do
+    expect(arena.gladiators).to_not be_nil
+  end
 
   describe "#add_gladiator" do
     context "when it has 0..1 gladiator" do
-      it "can add gladiators"
+      it "can add gladiators" do
+        expect(arena.gladiators.count).to be(0)
+        arena.add_gladiator spear_1
+        expect(arena.gladiators.count).to be(1)
+        arena.add_gladiator club_1
+        expect(arena.gladiators.count).to be(2)
+      end
     end
     context "when it has 2 gladiators" do
-      it "cannot add gladiators"
+      it "cannot add gladiators" do
+        arena.add_gladiator spear_1
+        arena.add_gladiator spear_2
+        expect(arena.gladiators.count).to be(2)
+        expect {
+          arena.add_gladiator spear_1
+        }.to_not change { arena.gladiators.count }
+      end
     end
   end
 
   describe "#fight" do
     context "when it has 0..1 gladiator" do
-      it "does nothing on gladiators"
+      it "does nothing on gladiators" do
+        expect(arena.gladiators.count).to be(0)
+        expect { arena.fight }.to_not change { arena.gladiators.count }
+        arena.add_gladiator spear_1
+        expect(arena.gladiators.count).to be(1)
+        expect { arena.fight }.to_not change { arena.gladiators.count }
+      end
     end
     context "when it has 2 gladiators" do
-      it "removes loser(s) from the list"
+      it "removes loser(s) from the list" do
+        arena.add_gladiator spear_1
+        arena.add_gladiator club_1
+        expect(arena.gladiators.count).to be(2)
+        arena.fight
+        expect(arena.gladiators).to eq [spear_1]
+      end
     end
   end
 
   describe "#determine_winner" do
-    context "when the two gladiators have the same weapon" do
-      it "returns nil"
-    end
-    context "if spear vs" do
-      context "club" do
-        it "spear wins"
-      end
-      context "trident" do
-        it "trident wins"
+    context "if the two gladiators have the same weapon" do
+      it "returns nil" do
+        arena.add_gladiator spear_1
+        arena.add_gladiator spear_2
+        expect(arena.determine_winner).to be_nil
       end
     end
-    context "if club vs" do
-      context "trident" do
-        it "club wins"
-      end
-      context "spear" do
-        it "spear wins"
+    context "spear vs club" do
+      it "spear wins" do
+        arena.add_gladiator spear_1
+        arena.add_gladiator club_1
+        expect(arena.determine_winner).to eq spear_1
       end
     end
-    context "if trident vs" do
-      context "spear" do
-        it "trident wins"
+    context "spear vs trident" do
+      it "trident wins" do
+        arena.add_gladiator spear_1
+        arena.add_gladiator trident_1
+        expect(arena.determine_winner).to eq trident_1
       end
-      context "club" do
-        it "club wins"
+    end
+    context "club vs trident" do
+      it "club wins" do
+        arena.add_gladiator club_1
+        arena.add_gladiator trident_1
+        expect(arena.determine_winner).to eq club_1
+      end
+    end
+    context "club vs spear" do
+      it "spear wins" do
+        arena.add_gladiator club_1
+        arena.add_gladiator spear_1
+        expect(arena.determine_winner).to eq spear_1
+      end
+    end
+    context "trident vs spear" do
+      it "trident wins" do
+        arena.add_gladiator trident_1
+        arena.add_gladiator spear_1
+        expect(arena.determine_winner).to eq trident_1
+      end
+    end
+    context "trident vs club" do
+      it "club wins" do
+        arena.add_gladiator trident_1
+        arena.add_gladiator club_1
+        expect(arena.determine_winner).to eq club_1
       end
     end
   end
