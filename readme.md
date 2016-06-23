@@ -34,11 +34,11 @@ $ rm -rf spec
 
 ### Arena Spec
 
-* An arena has a name
-  * The name should be capitalized
-* An arena can have gladiators
-* You can add a gladiator to the arena
-  * The arena should never have more than 2 gladiators in it at a time
+* An arena has a name   x
+  * The name should be capitalized   x   10 failures
+* An arena can have gladiators x
+* You can add a gladiator to the arena x    7 failures
+  * The arena should never have more than 2 gladiators in it at a time x     6 failures
 * If there are two gladiators in the arena, you can call a fight method that results in the elimination of one of the gladiators from the arena.
   * Winning conditions:
     * Trident beats Spear
