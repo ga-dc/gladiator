@@ -10,9 +10,11 @@ describe Gladiator do
       expect(gladiator.name).to_not be_nil
       expect(gladiator.name).to eq("Maximus")
     end
+    # Done - gladiator.rb line 6
     it "has a weapon" do
       expect(gladiator.weapon).to_not be_nil
       expect(gladiator.weapon).to eq("Sword")
     end
+    # Done - gladiator.rb line 6
   end
 end
