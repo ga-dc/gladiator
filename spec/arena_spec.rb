@@ -17,12 +17,12 @@ describe Arena do
     it "has a name" do
       expect(arena.name).to_not be_nil
     end
-
+#Done - arena.rb line 3
     it "is always capitalized" do
       expect(arena.name).to eq("Megalopolis")
     end
   end
-
+#Done - arena.rb line 7
   describe "#gladiators" do
     it "starts empty" do
       expect(arena.gladiators).to eq([])
