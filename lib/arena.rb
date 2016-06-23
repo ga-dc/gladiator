@@ -1,4 +1,3 @@
-# require 'pry'
 require_relative "./gladiator"
 
 class Arena
@@ -16,12 +15,6 @@ class Arena
   def fight
     # Do nothing is there is no gladiator in the arena.
     return if @gladiators.count < 2
-
-    # # Debug
-    # puts "-" * 50
-    # puts "#{@gladiators[0].name} : #{@gladiators[0].weapon}"
-    # puts "#{@gladiators[1].name} : #{@gladiators[1].weapon}"
-    # puts "-" * 50
 
     winner = determine_winner       # Determine the winner.
     @gladiators = []                # Clear the list.
@@ -49,17 +42,3 @@ class Arena
     end
   end
 end
-
-# # Experiments.
-# arena = Arena.new("megalopolis")
-#
-# spear = Gladiator.new("Maximus","Spear")
-# trident = Gladiator.new("Bilcephalon","Trident")
-#
-# # club_1 = Gladiator.new("Ephates","Club")
-# # club_2 = Gladiator.new("Cylodeus","Club")
-#
-# arena.add_gladiator spear
-# arena.add_gladiator trident
-#
-# binding.pry
