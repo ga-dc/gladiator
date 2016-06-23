@@ -1,11 +1,13 @@
 # RSpec Gladiator Arena
 
-The Emperor has commissioned you to build a Gladiator Arena. Your life depends on developing a well-thought-out arena, so you have been given tests to make sure
+The Emperor has commissioned you to build a Gladiator Arena. Your life depends
+on developing a well-thought-out arena, so you have been given tests to make sure
 you build it well.
 
 ## How to do this assignment
 
-1. In the gladiator folder, run `bundle install` to make sure you have the right gems installed
+1. In the gladiator folder, run `bundle install` to make sure you have the
+right gems installed
 2. Run `rspec` to run your tests. They should all fail.
 3. Start with the `Gladiator` tests / class (see steps below)
 4. Then do the `Arena` tests / class (see steps below)
