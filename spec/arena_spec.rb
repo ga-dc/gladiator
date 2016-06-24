@@ -77,6 +77,40 @@ describe Arena do
     end
   end
 
+  describe "#is_entetained?" do
+    context "the arena is empty" do
+      it "has an unhappy crowd" do
+        expect(arena.is_entertained?).to eq(false)
+      end
+    end
+    context "the arena has one gladiator who is not Maximus" do
+      it "has an unhappy crowd" do
+        arena.add_gladiator(ephates)
+        expect(arena.is_entertained?).to eq(false)
+      end
+    end
+    context "the arena has two gladiators and neither is  Maximus" do
+      it "has an unhappy crowd" do
+        arena.add_gladiator(ephates)
+        arena.add_gladiator(cylodeus)
+        expect(arena.is_entertained?).to eq(false)
+      end
+    end
+    context "the arena has one gladiator who is Maximus" do
+      it "has a happy crowd" do
+        arena.add_gladiator(maximus)
+        expect(arena.is_entertained?).to eq(true)
+      end
+    end
+    context "the arena has two gladiators and one is  Maximus" do
+      it "has a happy crowd" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(cylodeus)
+        expect(arena.is_entertained?).to eq(true)
+      end
+    end
+  end
+
   describe "#fight" do
     context "when there are no gladiators" do
       it "does nothing" do

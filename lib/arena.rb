@@ -23,6 +23,13 @@ class Arena
     @gladiators.delete(ex_gladiator)
   end
 
+  def is_entertained?
+    @gladiators.each do |gladiator|
+      return true if gladiator.name == "Maximus"
+    end
+    return false
+  end
+
   def fight
     return if (@gladiators.count < 2)
     if @gladiators[0].name == 'Maximus'
@@ -32,6 +39,7 @@ class Arena
       @gladiators.delete_at(0)
       return
     end
+
     wins_over = {"Trident" => "Spear", "Spear" => "Club", "Club" => "Trident"}
     if (@gladiators[0].weapon == @gladiators[1].weapon)
       @gladiators = []
