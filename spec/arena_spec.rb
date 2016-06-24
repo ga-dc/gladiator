@@ -29,6 +29,22 @@ describe Arena do
     end
   end
 
+  describe "#remove_gladiator" do
+
+    context "when there are no gladiators" do
+      it "does nothing" do
+        arena.remove_gladiator(maximus)
+        expect(arena.gladiators.count).to eq(0)
+      end
+    end
+
+    it "removes a gladiator from the arena by name" do
+      arena.add_gladiator(maximus)
+      arena.remove_gladiator(maximus)
+      expect(arena.gladiators).not_to include(maximus)
+    end
+  end
+
   describe "#add_gladiator" do
 
     it "adds a gladiator to the arena" do
@@ -62,6 +78,16 @@ describe Arena do
         arena.add_gladiator(maximus)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
+      end
+    end
+
+    context "when gladiator's name is maximus" do
+      it "will always win" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(bilcephalon)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators[0]).to eq(maximus)
       end
     end
 

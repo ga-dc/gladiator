@@ -34,17 +34,17 @@ $ rm -rf spec
 
 ### Arena Spec
 
-* An arena has a name
-  * The name should be capitalized
-* An arena can have gladiators
-* You can add a gladiator to the arena
-  * The arena should never have more than 2 gladiators in it at a time
+* An arena has a name   x
+  * The name should be capitalized   x   10 failures
+* An arena can have gladiators x
+* You can add a gladiator to the arena x    7 failures
+  * The arena should never have more than 2 gladiators in it at a time x     6 failures
 * If there are two gladiators in the arena, you can call a fight method that results in the elimination of one of the gladiators from the arena.
   * Winning conditions:
-    * Trident beats Spear
-    * Spear beats Club
-    * Club beats Trident
-    * If the two gladiators have the same weapon, they are both eliminated.
+    * Trident beats Spear  x
+    * Spear beats Club x
+    * Club beats Trident x
+    * If the two gladiators have the same weapon, they are both eliminated. x
 
 
 ## Double Bonus!
@@ -52,7 +52,7 @@ $ rm -rf spec
 Note: No tests are provided for this bonus. You can either just add the
 functionality w/o tests, or try to write the tests yourself.
 
-* Add a method to remove gladiators from the arena by name
+* Add a method to remove gladiators from the arena by name X
 * Update your winning conditions so that if the gladiator named "Maximus" is in the fight, he wins.
 * Add a method to check to see if the crowd is entertained (`.entertained?`). The crowd is only entertained if Maximus is in the arena.
 * Before a losing gladiator is eliminated, the user should be prompted to put their thumbs up or down. If user votes down, the losing gladiator is removed. If the user votes up, the gladiator stays in the arena and his opponent is removed. (Life isn't fair.)
