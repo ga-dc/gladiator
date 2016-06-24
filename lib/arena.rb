@@ -11,41 +11,59 @@ class Arena
     end
   end
 
+  # sparta and troy are getters for the weapon of the two gladiators currently in the arena
+  # julius and augustus remove the losing gladiator from the arena.
+
   def fight
+    def sparta
+      @gladiators[0].weapon
+    end
+
+    def troy
+      @gladiators[1].weapon
+    end
+
+      def julius
+        @gladiators.delete_at(0)
+      end
+
+      def augustus
+        @gladiators.delete_at(1)
+      end
 
         size = @gladiators.length
 
-        if size < 2
-          puts "nothing"
+    if size < 2
+      puts "nothing"
 
-        elsif size == 2
-          if  @gladiators[0].weapon == @gladiators[1].weapon
-            @gladiators = []
+    elsif size == 2
+      if  sparta == troy
+        @gladiators = []
 
-          elsif @gladiators[0].weapon == "Spear"
-            if @gladiators[1].weapon == "Trident"
-              @gladiators.delete_at(0)
-            else
-              @gladiators.delete_at(1)
-            end
+      elsif sparta == "Spear"
+        if troy  == "Trident"
+          return julius
+        else
+          return augustus
+        end
 
-          elsif @gladiators[0].weapon == "Trident"
-            if @gladiators[1].weapon == "Club"
-              @gladiators.delete_at(0)
-            else
-              @gladiators.delete_at(1)
-            end
+      elsif sparta == "Trident"
+        if troy  == "Club"
+          return julius
+        else
+          return augustus
+        end
 
-          elsif @gladiators[0].weapon == "Club"
-            if @gladiators[1].weapon == "Spear"
-              @gladiators.delete_at(0)
-            else
-              @gladiators.delete_at(1)
-            end
-          end
+      elsif sparta == "Club"
+        if troy  == "Spear"
+          return julius
+        else
+          return augustus
         end
       end
     end
+  end
+end
 
 
 
@@ -69,9 +87,9 @@ class Arena
 
 
 
-    # dave = Gladiator.new("Dave","Chainsaw")
-    # # dave = {name: "Dave",weapon: "Chainsaw"}
-    # myArena = Arena.new("denzel")
-    # # myArena = {name: "denzel"}
-    # denzel.add_gladiator(dave)
-    # # @gladiators = [dave]
+# dave = Gladiator.new("Dave","Chainsaw")
+# # dave = {name: "Dave",weapon: "Chainsaw"}
+# myArena = Arena.new("denzel")
+# # myArena = {name: "denzel"}
+# denzel.add_gladiator(dave)
+# # @gladiators = [dave]
