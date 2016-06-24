@@ -24,8 +24,15 @@ class Arena
   end
 
   def fight
-    wins_over = {"Trident" => "Spear", "Spear" => "Club", "Club" => "Trident"}
     return if (@gladiators.count < 2)
+    if @gladiators[0].name == 'Maximus'
+      @gladiators.delete_at(1)
+      return
+    elsif @gladiators[1].name == 'Maximus'
+      @gladiators.delete_at(0)
+      return
+    end
+    wins_over = {"Trident" => "Spear", "Spear" => "Club", "Club" => "Trident"}
     if (@gladiators[0].weapon == @gladiators[1].weapon)
       @gladiators = []
       return

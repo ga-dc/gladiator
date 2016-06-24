@@ -12,7 +12,6 @@ describe Arena do
   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
-  let(:morituri){Gladiator.new("Morituri","Club")}
 
   describe "#name" do
     it "has a name" do
@@ -51,6 +50,7 @@ describe Arena do
   end
 
   describe "#delete_gladiator" do
+    let(:morituri){Gladiator.new("Morituri","Club")}
     context "when the named gladiator is in the arena" do
       it "removes him" do
         arena.add_gladiator(maximus)
@@ -93,9 +93,43 @@ describe Arena do
       end
     end
 
-    context "when Spear v Trident" do
-      it "kills: spear when fighting trident" do
+    context "when Maximus is in the arena and would normally win" do
+      let(:morituri){Gladiator.new("Morituri","Club")}
+      it "kills his opponent" do
         arena.add_gladiator(maximus)
+        arena.add_gladiator(morituri)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators).to_not include(morituri)
+      end
+    end
+
+    context "when Maximus is in the arena and would normally lose" do
+      let(:morituri){Gladiator.new("Morituri","Trident")}
+      it "kills his opponent" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(morituri)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators).to_not include(morituri)
+      end
+    end
+
+    context "when Maximus is in the arena and would normally win" do
+      let(:morituri){Gladiator.new("Morituri","Spear")}
+      it "kills his opponent" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(morituri)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators).to_not include(morituri)
+      end
+    end
+
+    context "when Spear v Trident" do
+      let(:morituri){Gladiator.new("Morituri","Spear")}
+      it "kills: spear when fighting trident" do
+        arena.add_gladiator(morituri)
         arena.add_gladiator(bilcephalon)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
