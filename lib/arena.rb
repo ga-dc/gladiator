@@ -19,6 +19,10 @@ class Arena
     end
   end
 
+  def delete_gladiator(ex_gladiator)
+    @gladiators.delete(ex_gladiator)
+  end
+
   def fight
     wins_over = {"Trident" => "Spear", "Spear" => "Club", "Club" => "Trident"}
     return if (@gladiators.count < 2)

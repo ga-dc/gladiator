@@ -12,6 +12,7 @@ describe Arena do
   let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
   let(:ephates){Gladiator.new("Ephates","Club")}
   let(:cylodeus){Gladiator.new("Cylodeus","Club")}
+  let(:morituri){Gladiator.new("Morituri","Club")}
 
   describe "#name" do
     it "has a name" do
@@ -46,6 +47,33 @@ describe Arena do
       arena.add_gladiator(ephates)
       expect(arena.gladiators).to_not include(ephates)
       expect(arena.gladiators.count).to eq(2)
+    end
+  end
+
+  describe "#delete_gladiator" do
+    context "when the named gladiator is in the arena" do
+      it "removes him" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(morituri)
+        arena.delete_gladiator(morituri)
+        expect(arena.gladiators).to_not include(morituri)
+        expect(arena.gladiators.count).to eq(1)
+      end
+    end
+    context "when the named gladiator is not in the empty arena" do
+      it "does not change the arena" do
+        arena.delete_gladiator(morituri)
+        expect(arena.gladiators.count).to eq(0)
+      end
+    end
+    context "when the named gladiator is not in the populated arena" do
+      it "does not change the arena" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(ephates)
+        arena.delete_gladiator(morituri)
+        expect(arena.gladiators).to_not include(morituri)
+        expect(arena.gladiators.count).to eq(2)
+      end
     end
   end
 
