@@ -49,6 +49,68 @@ describe Arena do
     end
   end
 
+  describe "#delete_gladiator" do
+    let(:morituri){Gladiator.new("Morituri","Club")}
+    context "when the named gladiator is in the arena" do
+      it "removes him" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(morituri)
+        arena.delete_gladiator(morituri)
+        expect(arena.gladiators).to_not include(morituri)
+        expect(arena.gladiators.count).to eq(1)
+      end
+    end
+    context "when the named gladiator is not in the empty arena" do
+      it "does not change the arena" do
+        arena.delete_gladiator(morituri)
+        expect(arena.gladiators.count).to eq(0)
+      end
+    end
+    context "when the named gladiator is not in the populated arena" do
+      it "does not change the arena" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(ephates)
+        arena.delete_gladiator(morituri)
+        expect(arena.gladiators).to_not include(morituri)
+        expect(arena.gladiators.count).to eq(2)
+      end
+    end
+  end
+
+  describe "#is_entetained?" do
+    context "the arena is empty" do
+      it "has an unhappy crowd" do
+        expect(arena.is_entertained?).to eq(false)
+      end
+    end
+    context "the arena has one gladiator who is not Maximus" do
+      it "has an unhappy crowd" do
+        arena.add_gladiator(ephates)
+        expect(arena.is_entertained?).to eq(false)
+      end
+    end
+    context "the arena has two gladiators and neither is  Maximus" do
+      it "has an unhappy crowd" do
+        arena.add_gladiator(ephates)
+        arena.add_gladiator(cylodeus)
+        expect(arena.is_entertained?).to eq(false)
+      end
+    end
+    context "the arena has one gladiator who is Maximus" do
+      it "has a happy crowd" do
+        arena.add_gladiator(maximus)
+        expect(arena.is_entertained?).to eq(true)
+      end
+    end
+    context "the arena has two gladiators and one is  Maximus" do
+      it "has a happy crowd" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(cylodeus)
+        expect(arena.is_entertained?).to eq(true)
+      end
+    end
+  end
+
   describe "#fight" do
     context "when there are no gladiators" do
       it "does nothing" do
@@ -65,9 +127,43 @@ describe Arena do
       end
     end
 
-    context "when Spear v Trident" do
-      it "kills: spear when fighting trident" do
+    context "when Maximus is in the arena and would normally win" do
+      let(:morituri){Gladiator.new("Morituri","Club")}
+      it "kills his opponent" do
         arena.add_gladiator(maximus)
+        arena.add_gladiator(morituri)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators).to_not include(morituri)
+      end
+    end
+
+    context "when Maximus is in the arena and would normally lose" do
+      let(:morituri){Gladiator.new("Morituri","Trident")}
+      it "kills his opponent" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(morituri)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators).to_not include(morituri)
+      end
+    end
+
+    context "when Maximus is in the arena and would normally win" do
+      let(:morituri){Gladiator.new("Morituri","Spear")}
+      it "kills his opponent" do
+        arena.add_gladiator(maximus)
+        arena.add_gladiator(morituri)
+        arena.fight
+        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators).to_not include(morituri)
+      end
+    end
+
+    context "when Spear v Trident" do
+      let(:morituri){Gladiator.new("Morituri","Spear")}
+      it "kills: spear when fighting trident" do
+        arena.add_gladiator(morituri)
         arena.add_gladiator(bilcephalon)
         arena.fight
         expect(arena.gladiators.count).to eq(1)
