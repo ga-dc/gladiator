@@ -2,106 +2,138 @@ require 'spec_helper'
 require_relative '../lib/gladiator'
 require_relative '../lib/arena'
 
-require 'spec_helper'
-require './lib/arena'
-require './lib/gladiator'
+=begin
+An arena has a name
+  The name should be capitalized
+An arena can have gladiators
+You can add a gladiator to the arena
+  The arena should never have more than 2 gladiators in it at a time
+If there are two gladiators in the arena, you can call a fight method that results in the elimination of one of the gladiators from the arena.
+  Winning conditions:
+    Trident beats Spear
+    Spear beats Club
+    Club beats Trident
+    If the two gladiators have the same weapon, they are both eliminated.
+=end
 
 describe Arena do
-  let(:arena){Arena.new("megalopolis")}
-  let(:maximus){Gladiator.new("Maximus","Spear")}
-  let(:bilcephalon){Gladiator.new("Bilcephalon","Trident")}
-  let(:ephates){Gladiator.new("Ephates","Club")}
-  let(:cylodeus){Gladiator.new("Cylodeus","Club")}
+  # Create an arana.
+  let(:arena) { Arena.new("suzuka circuit") }
 
-  describe "#name" do
-    it "has a name" do
-      expect(arena.name).to_not be_nil
-    end
+  # Create gladiators with different weapons.
+  let(:spearvy) { Gladiator.new("spearvy", "spear") }
+  let(:speargon) { Gladiator.new("speargon", "spear") }
+  let(:clubee) { Gladiator.new("clubee", "club") }
+  let(:tridenter) { Gladiator.new("tridenter", "trident") }
 
-    it "is always capitalized" do
-      expect(arena.name).to eq("Megalopolis")
-    end
+  it "has a name that is capitalized" do
+    expect(arena.name).to eq "Suzuka circuit"
   end
-
-  describe "#gladiators" do
-    it "starts empty" do
-      expect(arena.gladiators).to eq([])
-    end
+  it "can have gladiators" do
+    expect(arena.gladiators).to_not be_nil
   end
 
   describe "#add_gladiator" do
-
-    it "adds a gladiator to the arena" do
-      arena.add_gladiator(maximus)
-      expect(arena.gladiators.count).to eq(1)
+    context "when it has 0..1 gladiator" do
+      it "can add gladiators" do
+        expect(arena.gladiators.count).to be(0)
+        arena.add_gladiator spearvy
+        expect(arena.gladiators.count).to be(1)
+        arena.add_gladiator clubee
+        expect(arena.gladiators.count).to be(2)
+      end
     end
-    it "can add multiple gladiators" do
-      arena.add_gladiator(maximus)
-      arena.add_gladiator(bilcephalon)
-      expect(arena.gladiators.count).to eq(2)
-    end
-    it "does not have more than two gladiators at once" do
-      arena.add_gladiator(maximus)
-      arena.add_gladiator(bilcephalon)
-      arena.add_gladiator(ephates)
-      expect(arena.gladiators).to_not include(ephates)
-      expect(arena.gladiators.count).to eq(2)
+    context "when it has 2 gladiators" do
+      it "cannot add gladiators" do
+        arena.add_gladiator spearvy
+        arena.add_gladiator speargon
+        expect(arena.gladiators.count).to be(2)
+        expect {
+          arena.add_gladiator spearvy
+        }.to_not change { arena.gladiators.count }
+      end
     end
   end
 
   describe "#fight" do
-    context "when there are no gladiators" do
-      it "does nothing" do
-        arena.fight
-        expect(arena.gladiators.count).to eq(0)
+    context "when it has 0..1 gladiator" do
+      it "does nothing on gladiators" do
+        expect(arena.gladiators.count).to be(0)
+        expect { arena.fight }.to_not change { arena.gladiators.count }
+        arena.add_gladiator spearvy
+        expect(arena.gladiators.count).to be(1)
+        expect { arena.fight }.to_not change { arena.gladiators.count }
       end
     end
-
-    context "when there is one gladiator" do
-      it "does nothing" do
-        arena.add_gladiator(maximus)
+    context "when it has 2 gladiators" do
+      it "removes loser(s) from the list" do
+        arena.add_gladiator spearvy
+        arena.add_gladiator clubee
+        expect(arena.gladiators.count).to be(2)
         arena.fight
-        expect(arena.gladiators.count).to eq(1)
+        expect(arena.gladiators).to eq [spearvy]
       end
     end
+  end
 
-    context "when Spear v Trident" do
-      it "kills: spear when fighting trident" do
-        arena.add_gladiator(maximus)
-        arena.add_gladiator(bilcephalon)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators[0]).to eq(bilcephalon)
+  describe "#determine_winner" do
+    context "if the two gladiators have the same weapon" do
+      it "returns nil" do
+        arena.add_gladiator spearvy
+        arena.add_gladiator speargon
+        expect(arena.determine_winner).to be_nil
       end
     end
-
-    context "when Club v Spear" do
-      it "kills: club when fighting spear" do
-        arena.add_gladiator(maximus)
-        arena.add_gladiator(ephates)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(maximus)
+    context "spear vs club" do
+      it "spear wins" do
+        arena.add_gladiator spearvy
+        arena.add_gladiator clubee
+        expect(arena.determine_winner).to eq spearvy
       end
     end
-
-    context "when Trident v Club" do
-      it "kills: trident when fighting club" do
-        arena.add_gladiator(bilcephalon)
-        arena.add_gladiator(ephates)
-        arena.fight
-        expect(arena.gladiators.count).to eq(1)
-        expect(arena.gladiators.first).to eq(ephates)
+    context "spear vs trident" do
+      it "trident wins" do
+        arena.add_gladiator spearvy
+        arena.add_gladiator tridenter
+        expect(arena.determine_winner).to eq tridenter
       end
     end
-
-    context "when same Weapons" do
-      it "kills: both if their weapons are the same" do
-        arena.add_gladiator(ephates)
-        arena.add_gladiator(cylodeus)
-        arena.fight
-        expect(arena.gladiators.count).to eq(0)
+    context "club vs trident" do
+      it "club wins" do
+        arena.add_gladiator clubee
+        arena.add_gladiator tridenter
+        expect(arena.determine_winner).to eq clubee
       end
+    end
+    context "club vs spear" do
+      it "spear wins" do
+        arena.add_gladiator clubee
+        arena.add_gladiator spearvy
+        expect(arena.determine_winner).to eq spearvy
+      end
+    end
+    context "trident vs spear" do
+      it "trident wins" do
+        arena.add_gladiator tridenter
+        arena.add_gladiator spearvy
+        expect(arena.determine_winner).to eq tridenter
+      end
+    end
+    context "trident vs club" do
+      it "club wins" do
+        arena.add_gladiator tridenter
+        arena.add_gladiator clubee
+        expect(arena.determine_winner).to eq clubee
+      end
+    end
+  end
+
+  describe "#remove_gladiator_by_name" do
+    it "removes gladiators from the arena by name" do
+      arena.add_gladiator tridenter
+      arena.add_gladiator clubee
+      arena.remove_gladiator_by_name "Clubee"
+      expect(arena.gladiators).to_not include clubee
     end
   end
 end
