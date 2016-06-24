@@ -1,0 +1,5 @@
+mega = Arena.new("megalopolis")
+maximus = Gladiator.new("Maximus","Spear")
+bilcephalon = Gladiator.new("Bilcephalon","Trident")
+ephateslet = Gladiator.new("Ephates","Club")
+cylodeus = Gladiator.new("Cylodeus","Club")
