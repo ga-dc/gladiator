@@ -1,3 +1,6 @@
+// this is my homework being completed
+
+
 # RSpec Gladiator Arena
 
 The Emperor has commissioned you to build a Gladiator Arena. Your life depends on developing a well-thought-out arena, so you have been given tests to make sure
