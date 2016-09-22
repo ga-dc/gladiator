@@ -1,56 +1,94 @@
 # RSpec Gladiator Arena
 
-The Emperor has commissioned you to build a Gladiator Arena. Your life depends on developing a well-thought-out arena, so you have been given tests to make sure
-you build it well.
+The Emperor has commissioned you to build a Gladiator Arena.
 
 ## How to do this assignment
 
-1. In the gladiator folder, run `bundle install` to make sure you have the right gems installed
-2. Run `rspec` to run your tests. They should all fail.
-3. Start with the `Gladiator` tests / class (see steps below)
-4. Then do the `Arena` tests / class (see steps below)
+The provided index.html file will be useful for testing out your code.
 
-For each individual test:
+## Part 1 - The Gladiator
 
-1. Read the error message.
-2. Make the smallest change in your code to fix the error.
-3. Run the test.
-4. Repeat 1 - 3 until the test passes
-5. Move to the next test.
+Create a `gladiator` class that has the following properties:
 
-## Bonus!
+* a `name`
+* a `weapon` (one of Spear, Club, Trident)
 
-Try writing the tests yourself:
-
-```
-$ rm -rf spec
+```js
+var max = new Gladiator("Maximus","Trident")
 ```
 
-## Specs
-### Gladiator Spec
+### Bonus
 
-* A gladiator has a name
-* A gladiator has a weapon (one of Spear, Club, Trident)
+How could you prevent creating Gladiators with a different weapon?
 
-### Arena Spec
+e.g. `new Gladiator("Taco")` throws an error.
 
-* An arena has a name
-  * The name should be capitalized
-* An arena can have gladiators
-* You can add a gladiator to the arena
-  * The arena should never have more than 2 gladiators in it at a time
-* If there are two gladiators in the arena, you can call a fight method that results in the elimination of one of the gladiators from the arena.
+## Part 2 - The Arena
+
+Create an `Arena` class that meets the following conditions:
+
+### An arena has a name
+
+```js
+var colosseum = new Arena("Colosseum")
+console.log(colosseum.name) // => Colosseum
+```
+### The name should be capitalized
+
+```js
+var colosseum = new Arena("megalopolis")
+console.log(colosseum.name) // => Megalopolis
+```
+
+### An arena can have gladiators
+
+```js
+var colosseum = new Arena("Colosseum")
+console.log(colosseum.gladiators) // => []
+```
+
+### You can add a gladiator to the arena
+
+
+```js
+var max = new Gladiator("Maximus","Trident")
+var colosseum = new Arena("Colosseum")
+colosseum.addGladiator(max)
+console.log(colosseum.gladiators) // => [Gladiator]
+```
+
+### The arena should never have more than 2 gladiators in it at a time
+
+```js
+var max = new Gladiator("Maximus","Trident")
+var titus = new Gladiator("Titus","Sword")
+var andronicus = new Gladiator("Andronicus","Sword")
+var colosseum = new Arena("Colosseum")
+colosseum.addGladiator(max)
+colosseum.addGladiator(titus)
+colosseum.addGladiator(andronicus)
+console.log(colosseum.gladiators.length) // => 2
+```
+
+### If there are two gladiators in the arena, you can call a fight method that results in the elimination of one of the gladiators from the arena.
+
   * Winning conditions:
     * Trident beats Spear
     * Spear beats Club
     * Club beats Trident
     * If the two gladiators have the same weapon, they are both eliminated.
 
+```js
+var max = new Gladiator("Maximus","Trident")
+var titus = new Gladiator("Titus","Spear")
+var colosseum = new Arena("Colosseum")
+colosseum.addGladiator(max)
+colosseum.addGladiator(titus)
+colosseum.fight()
+console.log(colosseum.gladiators) // => [max]
+```
 
 ## Double Bonus!
-
-Note: No tests are provided for this bonus. You can either just add the
-functionality w/o tests, or try to write the tests yourself.
 
 * Add a method to remove gladiators from the arena by name
 * Update your winning conditions so that if the gladiator named "Maximus" is in the fight, he wins.
